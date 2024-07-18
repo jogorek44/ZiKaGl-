@@ -8,6 +8,8 @@ import java.awt.BorderLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextPane;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Settings {
 
@@ -49,6 +51,12 @@ public class Settings {
 		panel.setLayout(null);
 		
 		JButton btnNewButton = new JButton("Menu");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Menu menu = new Menu();
+				menu.setVisible(true);
+				}
+		});
 		btnNewButton.setBounds(6, 6, 117, 29);
 		panel.add(btnNewButton);
 		
@@ -61,4 +69,8 @@ public class Settings {
 		txtpnHierStehtDie.setBounds(134, 80, 231, 169);
 		panel.add(txtpnHierStehtDie);
 	}
+	public void setVisible(boolean visible) {
+        frame.setVisible(visible);
+    }
+	
 }

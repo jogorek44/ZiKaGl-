@@ -7,7 +7,17 @@ import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Image;
+
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.SwingConstants;
+import java.awt.Color;
+import java.awt.SystemColor;
+import javax.swing.UIManager;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Menu {
 
@@ -45,36 +55,96 @@ public class Menu {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(Color.GREEN);
+		panel_1.setOpaque(false);
 		frame.getContentPane().add(panel_1, BorderLayout.CENTER);
 		panel_1.setLayout(null);
 		
+		TransparentButton btnNewButton_2 = new TransparentButton("Bank Account");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				  Bank bank = new Bank();
+	                bank.setVisible(true);
+	            }
+		});
+		btnNewButton_2.setFont(new Font("Dialog", Font.PLAIN, 20));
+		btnNewButton_2.setForeground(Color.WHITE);
+		btnNewButton_2.setBounds(6, 6, 223, 43);
+		panel_1.add(btnNewButton_2);
+		
+		TransparentButton btnNewButton = new TransparentButton("Start");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				  BlackJack blackjack = new BlackJack();
+	                blackjack.setVisible(true);
+	            }
+		});
+		btnNewButton.setFont(new Font("Dialog", Font.PLAIN, 30));
+		btnNewButton.setForeground(Color.WHITE);
+		
+		btnNewButton.setBounds(453, 202, 117, 54);
+		
+			panel_1.add(btnNewButton);
+		
+			TransparentButton btnNewButton_3 = new TransparentButton("Shop");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				  Shop shop = new Shop();
+	                shop.setVisible(true);
+	            }
+		});
+		btnNewButton_3.setFont(new Font("Dialog", Font.PLAIN, 30));
+		btnNewButton_3.setForeground(Color.WHITE);
+		btnNewButton_3.setBounds(453, 443, 117, 54);
+		panel_1.add(btnNewButton_3);
+		
+		TransparentButton btnNewButton_1 = new TransparentButton("Settings");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				  Settings settings = new Settings();
+	                settings.setVisible(true);
+	            }
+		});
+		btnNewButton_1.setFont(new Font("Dialog", Font.PLAIN, 30));
+		btnNewButton_1.setForeground(Color.WHITE);
+		btnNewButton_1.setBounds(427, 324, 170, 82);
+		btnNewButton_1.setBackground(new Color(0,0,0,128));
+		panel_1.add(btnNewButton_1);
+		
 		JLabel lblNewLabel = new JLabel("ZiKaGlü");
-		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 40));
-		lblNewLabel.setBounds(504, 6, 150, 71);
+		lblNewLabel.setForeground(new Color(255, 51, 51));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 66));
+		lblNewLabel.setBounds(186, 6, 652, 71);
+		
 		panel_1.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Home Menu");
-		lblNewLabel_1.setBounds(547, 89, 80, 16);
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setFont(new Font("Lucida Grande", Font.PLAIN, 28));
+		lblNewLabel_1.setForeground(Color.WHITE);
+		lblNewLabel_1.setBounds(418, 103, 188, 43);
 		panel_1.add(lblNewLabel_1);
 		
-		JButton btnNewButton = new JButton("Start");
-		btnNewButton.setBounds(528, 200, 117, 29);
-		panel_1.add(btnNewButton);
 		
 		JLabel lblNewLabel_2 = new JLabel("Black Jack");
-		lblNewLabel_2.setBounds(554, 172, 80, 16);
+		lblNewLabel_2.setBackground(new Color(255, 255, 255));
+		lblNewLabel_2.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_2.setForeground(new Color(255, 255, 255));
+		lblNewLabel_2.setBounds(411, 158, 201, 32);
 		panel_1.add(lblNewLabel_2);
 		
-		JButton btnNewButton_1 = new JButton("Settings");
-		btnNewButton_1.setBounds(528, 241, 117, 29);
-		panel_1.add(btnNewButton_1);
+		JLabel lblNewLabel_3 = new JLabel("h");
+		lblNewLabel_3.setBounds(0, -14, 1024, 600);
+		lblNewLabel_3.setOpaque(false);
 		
-		JButton btnNewButton_3 = new JButton("Shop");
-		btnNewButton_3.setBounds(206, 254, 117, 29);
-		panel_1.add(btnNewButton_3);
-		
-		JButton btnNewButton_2 = new JButton("Bank Account");
-		btnNewButton_2.setBounds(6, 6, 188, 29);
-		panel_1.add(btnNewButton_2);
+		panel_1.add(lblNewLabel_3);
+		Image img = new ImageIcon(this.getClass().getResource("/ZiKaGlü.jpg")).getImage();
+	    lblNewLabel_3.setIcon(new ImageIcon(img));
+	    
 	}
+	public void setVisible(boolean visible) {
+        frame.setVisible(visible);
+    }
 }

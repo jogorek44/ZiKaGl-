@@ -8,6 +8,8 @@ import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Bank {
 
@@ -69,8 +71,17 @@ public class Bank {
 		Einzahlbetrag.setColumns(10);
 		
 		JButton btnNewButton_1 = new JButton("Menu");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Menu menu = new Menu();
+				menu.setVisible(true);
+				}
+		});
 		btnNewButton_1.setBounds(6, 6, 117, 29);
 		panel.add(btnNewButton_1);
 	}
-
+	public void setVisible(boolean visible) {
+        frame.setVisible(visible);
+    }
+	
 }

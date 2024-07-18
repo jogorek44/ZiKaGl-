@@ -1,6 +1,8 @@
 package GUI;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -58,6 +60,12 @@ public class AdminView {
 		
 		JButton btnNewButton = new JButton("Menu");
 		btnNewButton.setBounds(6, 6, 117, 29);
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Menu menu = new Menu();
+				menu.setVisible(true);
+				}
+		});
 		panel.add(btnNewButton);
 		
 		JLabel lblNewLabel = new JLabel("Orders");
@@ -140,5 +148,8 @@ public class AdminView {
 		lblNewLabel_2_1.setBounds(453, 75, 61, 16);
 		panel.add(lblNewLabel_2_1);
 	}
-
+	public void setVisible(boolean visible) {
+        frame.setVisible(visible);
+    }
+	
 }

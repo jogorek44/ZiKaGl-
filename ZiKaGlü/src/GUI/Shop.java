@@ -1,6 +1,8 @@
 package GUI;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -52,6 +54,12 @@ public class Shop {
 		
 		JButton btnNewButton = new JButton("Menu");
 		btnNewButton.setBounds(6, 6, 117, 29);
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Menu menu = new Menu();
+				menu.setVisible(true);
+				}
+		});
 		panel.add(btnNewButton);
 		
 		JLabel lblNewLabel = new JLabel("Beer");
@@ -106,5 +114,8 @@ public class Shop {
 		panel.add(txtSum);
 		txtSum.setColumns(10);
 	}
-
+	public void setVisible(boolean visible) {
+        frame.setVisible(visible);
+    }
+	
 }
