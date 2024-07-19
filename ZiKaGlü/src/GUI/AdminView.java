@@ -132,7 +132,7 @@ public class AdminView {
 		
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
-		textField_2.setBounds(453, 146, 130, 26);
+		textField_2.setBounds(453, 146, 130, 29);
 		panel.add(textField_2);
 		
 		JLabel lblNewLabel_4_1 = new JLabel("Table 4");

@@ -55,8 +55,7 @@ public class Menu {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(Color.GREEN);
-		panel_1.setOpaque(false);
+		
 		frame.getContentPane().add(panel_1, BorderLayout.CENTER);
 		panel_1.setLayout(null);
 		
@@ -125,7 +124,9 @@ public class Menu {
 		JLabel lblNewLabel_1 = new JLabel("Home Menu");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setFont(new Font("Lucida Grande", Font.PLAIN, 28));
-		lblNewLabel_1.setForeground(Color.WHITE);
+		lblNewLabel_1.setForeground(Color.black);
+		lblNewLabel_1.setBackground(new Color (255, 255, 255, 128));
+		lblNewLabel_1.setOpaque(true); //damit der Hintergrund nicht durchsichtig ist
 		lblNewLabel_1.setBounds(418, 103, 188, 43);
 		panel_1.add(lblNewLabel_1);
 		
@@ -134,17 +135,19 @@ public class Menu {
 		lblNewLabel_2.setBackground(new Color(255, 255, 255));
 		lblNewLabel_2.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_2.setForeground(new Color(255, 255, 255));
-		lblNewLabel_2.setBounds(411, 158, 201, 32);
+		lblNewLabel_2.setForeground(new Color(0,0,0));
+		lblNewLabel_2.setBackground(new Color (255, 255, 255, 128));
+		lblNewLabel_2.setOpaque(true);
+		lblNewLabel_2.setBounds(432, 158, 159, 32);
 		panel_1.add(lblNewLabel_2);
 		
-		JLabel lblNewLabel_3 = new JLabel("h");
+		JLabel lblNewLabel_3 = new JLabel("");
 		lblNewLabel_3.setBounds(0, -14, 1024, 600);
 		lblNewLabel_3.setOpaque(false);
-		
-		panel_1.add(lblNewLabel_3);
 		Image img = new ImageIcon(this.getClass().getResource("/ZiKaGlü.jpg")).getImage();
 	    lblNewLabel_3.setIcon(new ImageIcon(img));
+		panel_1.add(lblNewLabel_3);
+		
 	    
 	}
 	public void setVisible(boolean visible) {

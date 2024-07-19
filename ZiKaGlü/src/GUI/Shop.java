@@ -17,7 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-public class Shop {
+public class Shop   {
 
 	private JFrame frame;
 	private JTextField txtShoppingCart;
@@ -92,7 +92,7 @@ public class Shop {
 		lblNewLabel_2.setBackground(new Color (0, 0, 0, 128));
 		lblNewLabel_2.setOpaque(true);
 
-		lblNewLabel_2.setBounds(680, 313, 61, 16);
+		lblNewLabel_2.setBounds(752, 313, 61, 16);
 		panel.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("$3");
@@ -117,7 +117,7 @@ public class Shop {
 		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_5.setBackground(new Color (0, 0, 0, 128));
 		lblNewLabel_5.setOpaque(true);
-		lblNewLabel_5.setBounds(680, 341, 61, 16);
+		lblNewLabel_5.setBounds(752, 341, 61, 16);
 		panel.add(lblNewLabel_5);
 		
 		TransparentButton btnNewButton_1 = new TransparentButton("Add");
@@ -129,7 +129,7 @@ public class Shop {
 		panel.add(btnNewButton_1_1);
 		
 		TransparentButton btnNewButton_1_2 = new TransparentButton("Add");
-		btnNewButton_1_2.setBounds(654, 369, 117, 32);
+		btnNewButton_1_2.setBounds(728, 369, 117, 32);
 		panel.add(btnNewButton_1_2);
 		
 		TransparentButton btnNewButton_2 = new TransparentButton("Checkout");
@@ -165,18 +165,25 @@ public class Shop {
 		txtSum.setBackground(new Color (150, 150, 150, 128));
 		panel.add(txtSum);
 		txtSum.setColumns(10);
-		
-		JLabel lblNewLabel_6 = new JLabel("");
-		lblNewLabel_6.setBounds(0, -28, 1024, 600);		
 		Image img = new ImageIcon(this.getClass().getResource("/Shop.jpeg")).getImage();
-		lblNewLabel_6.setIcon(new ImageIcon(img));
 		
 		JLabel lblNewLabel_7 = new JLabel("");
 		lblNewLabel_7.setBounds(409, 56, 167, 250);
 		panel.add(lblNewLabel_7);
 		Image img_2 = new ImageIcon(this.getClass().getResource("/Beer.jpeg")).getImage();
 		lblNewLabel_7.setIcon(new ImageIcon(img_2));
+		
+		JLabel lblNewLabel_8 = new JLabel("");
+		lblNewLabel_8.setBounds(626, 61, 312, 240);
+		Image img_3 = new ImageIcon(this.getClass().getResource("/Caffee.png")).getImage();
+		lblNewLabel_8.setIcon(new ImageIcon(img_3));
+		panel.add(lblNewLabel_8);
+		
+		JLabel lblNewLabel_6 = new JLabel("");
+		lblNewLabel_6.setBounds(0, -28, 1024, 600);		
+		lblNewLabel_6.setIcon(new ImageIcon(img));
 		panel.add(lblNewLabel_6);
+		
 	}
 	
 	public void setVisible(boolean visible) {

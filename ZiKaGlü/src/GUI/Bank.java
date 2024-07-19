@@ -19,7 +19,7 @@ import java.awt.Font;
 public class Bank {
 
 	private JFrame frame;
-	private JTextField Kontostand;
+	static JTextField Kontostand;
 	private JTextField Einzahlbetrag;
 
 	/**
@@ -63,27 +63,31 @@ public class Bank {
 		lblNewLabel.setBounds(42, 247, 155, 64);
 		panel.add(lblNewLabel);
 		
+		
 		Kontostand = new JTextField();
 		Kontostand.setForeground(Color.BLACK);
 		Kontostand.setEditable(false);
 		Kontostand.setFont(new Font("Lucida Grande", Font.PLAIN, 40));
 		Kontostand.setBackground(new Color (150, 150, 150, 128));
-		Kontostand.setText("<Zahl>");
+		Kontostand.setText("0");
 		Kontostand.setBounds(224, 247, 160, 64);
 		panel.add(Kontostand);
 		Kontostand.setColumns(10);
 		
-		TransparentButton btnNewButton = new TransparentButton("Deposit");
-		btnNewButton.setBounds(519, 247, 117, 64);
-		panel.add(btnNewButton);
 		
 		Einzahlbetrag = new JTextField();
 		Einzahlbetrag.setFont(new Font("Lucida Grande", Font.PLAIN, 40));
-		Einzahlbetrag.setText("<Zahl>");
+		Einzahlbetrag.setText("0");
 		Einzahlbetrag.setBounds(648, 244, 155, 64);
 		Einzahlbetrag.setBackground(new Color (150, 150, 150, 128));
 		panel.add(Einzahlbetrag);
 		Einzahlbetrag.setColumns(10);
+		
+		TransparentButton btnNewButton = new TransparentButton("Deposit");
+		
+		btnNewButton.setBounds(519, 247, 117, 64);
+		panel.add(btnNewButton);
+		
 		
 		TransparentButton btnNewButton_8 = new TransparentButton("Menu");
 		btnNewButton_8.addActionListener(new ActionListener() {
