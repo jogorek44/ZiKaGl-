@@ -1,15 +1,21 @@
 package GUI;
 
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
+import java.awt.Color;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 public class Shop {
 
@@ -52,70 +58,128 @@ public class Shop {
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 		
-		JButton btnNewButton = new JButton("Menu");
-		btnNewButton.setBounds(6, 6, 117, 29);
-		btnNewButton.addActionListener(new ActionListener() {
+		TransparentButton btnNewButton_4 = new TransparentButton("Menu");
+		btnNewButton_4.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		btnNewButton_4.setBounds(6, 6, 137, 32);
+		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Menu menu = new Menu();
 				menu.setVisible(true);
 				}
 		});
-		panel.add(btnNewButton);
+		panel.add(btnNewButton_4);
 		
 		JLabel lblNewLabel = new JLabel("Beer");
-		lblNewLabel.setBounds(39, 68, 61, 16);
+		lblNewLabel.setForeground(Color.WHITE);
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBackground(new Color (0, 0, 0, 128));
+		lblNewLabel.setOpaque(true);
+
+		lblNewLabel.setBounds(458, 313, 61, 16);
 		panel.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Cigaretts");
-		lblNewLabel_1.setBounds(138, 68, 61, 16);
+		lblNewLabel_1.setForeground(Color.WHITE);
+		lblNewLabel_1.setBackground(new Color (0, 0, 0, 128));
+		lblNewLabel_1.setOpaque(true);
+
+		lblNewLabel_1.setBounds(174, 313, 61, 16);
 		panel.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Coffee");
-		lblNewLabel_2.setBounds(303, 68, 61, 16);
+		lblNewLabel_2.setForeground(Color.WHITE);
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_2.setBackground(new Color (0, 0, 0, 128));
+		lblNewLabel_2.setOpaque(true);
+
+		lblNewLabel_2.setBounds(680, 313, 61, 16);
 		panel.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("$3");
-		lblNewLabel_3.setBounds(27, 96, 61, 16);
+		lblNewLabel_3.setForeground(Color.WHITE);
+		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_3.setBackground(new Color (0, 0, 0, 128));
+		lblNewLabel_3.setOpaque(true);
+
+		lblNewLabel_3.setBounds(458, 341, 61, 16);
 		panel.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("$8");
-		lblNewLabel_4.setBounds(138, 96, 61, 16);
+		lblNewLabel_4.setForeground(Color.WHITE);
+		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_4.setBackground(new Color (0, 0, 0, 128));
+		lblNewLabel_4.setOpaque(true);
+		lblNewLabel_4.setBounds(174, 341, 61, 16);
 		panel.add(lblNewLabel_4);
 		
 		JLabel lblNewLabel_5 = new JLabel("$2.5");
-		lblNewLabel_5.setBounds(303, 96, 61, 16);
+		lblNewLabel_5.setForeground(Color.WHITE);
+		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_5.setBackground(new Color (0, 0, 0, 128));
+		lblNewLabel_5.setOpaque(true);
+		lblNewLabel_5.setBounds(680, 341, 61, 16);
 		panel.add(lblNewLabel_5);
 		
-		JButton btnNewButton_1 = new JButton("Add");
-		btnNewButton_1.setBounds(6, 124, 117, 29);
+		TransparentButton btnNewButton_1 = new TransparentButton("Add");
+		btnNewButton_1.setBounds(434, 369, 117, 32);
 		panel.add(btnNewButton_1);
 		
-		JButton btnNewButton_1_1 = new JButton("Add");
-		btnNewButton_1_1.setBounds(130, 124, 117, 29);
+		TransparentButton btnNewButton_1_1 = new TransparentButton("Add");
+		btnNewButton_1_1.setBounds(144, 369, 117, 32);
 		panel.add(btnNewButton_1_1);
 		
-		JButton btnNewButton_1_2 = new JButton("Add");
-		btnNewButton_1_2.setBounds(279, 124, 117, 29);
+		TransparentButton btnNewButton_1_2 = new TransparentButton("Add");
+		btnNewButton_1_2.setBounds(654, 369, 117, 32);
 		panel.add(btnNewButton_1_2);
 		
-		JButton btnNewButton_2 = new JButton("Checkout");
-		btnNewButton_2.setBounds(315, 226, 117, 29);
+		TransparentButton btnNewButton_2 = new TransparentButton("Checkout");
+		btnNewButton_2.setBounds(853, 498, 117, 32);
 		panel.add(btnNewButton_2);
 		
+		TransparentButton btnNewButton = new TransparentButton("BlackJack");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				  BlackJack blackjack = new BlackJack();
+	                blackjack.setVisible(true);
+	            }
+		});
+		btnNewButton.setFont(new Font("Dialog", Font.PLAIN, 20));
+		btnNewButton.setForeground(Color.WHITE);
+		
+		btnNewButton.setBounds(6, 50, 145, 32);
+		
+			panel.add(btnNewButton);
+		
 		txtShoppingCart = new JTextField();
+		txtShoppingCart.setForeground(Color.WHITE);
 		txtShoppingCart.setText("Shopping Cart");
-		txtShoppingCart.setBounds(24, 226, 130, 26);
+		txtShoppingCart.setBounds(460, 498, 130, 32);
+		txtShoppingCart.setBackground(new Color (150, 150, 150, 128));
 		panel.add(txtShoppingCart);
 		txtShoppingCart.setColumns(10);
 		
 		txtSum = new JTextField();
+		txtSum.setForeground(Color.WHITE);
 		txtSum.setText("Sum");
-		txtSum.setBounds(166, 226, 130, 26);
+		txtSum.setBounds(670, 498, 130, 32);
+		txtSum.setBackground(new Color (150, 150, 150, 128));
 		panel.add(txtSum);
 		txtSum.setColumns(10);
+		
+		JLabel lblNewLabel_6 = new JLabel("");
+		lblNewLabel_6.setBounds(0, -28, 1024, 600);		
+		Image img = new ImageIcon(this.getClass().getResource("/Shop.jpeg")).getImage();
+		lblNewLabel_6.setIcon(new ImageIcon(img));
+		
+		JLabel lblNewLabel_7 = new JLabel("");
+		lblNewLabel_7.setBounds(409, 56, 167, 250);
+		panel.add(lblNewLabel_7);
+		Image img_2 = new ImageIcon(this.getClass().getResource("/Beer.jpeg")).getImage();
+		lblNewLabel_7.setIcon(new ImageIcon(img_2));
+		panel.add(lblNewLabel_6);
 	}
+	
 	public void setVisible(boolean visible) {
         frame.setVisible(visible);
     }
-	
 }

@@ -1,15 +1,20 @@
 package GUI;
 
 import java.awt.EventQueue;
+import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
+import java.awt.Color;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import javax.swing.JButton;
+import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.SystemColor;
+import java.awt.Font;
 
 public class Bank {
 
@@ -53,35 +58,50 @@ public class Bank {
 		panel.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Balance");
-		lblNewLabel.setBounds(159, 37, 96, 16);
+		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 40));
+		lblNewLabel.setBackground(SystemColor.text);
+		lblNewLabel.setBounds(42, 247, 155, 64);
 		panel.add(lblNewLabel);
 		
 		Kontostand = new JTextField();
-		Kontostand.setBounds(149, 65, 130, 26);
+		Kontostand.setForeground(Color.BLACK);
+		Kontostand.setEditable(false);
+		Kontostand.setFont(new Font("Lucida Grande", Font.PLAIN, 40));
+		Kontostand.setBackground(new Color (150, 150, 150, 128));
+		Kontostand.setText("<Zahl>");
+		Kontostand.setBounds(224, 247, 160, 64);
 		panel.add(Kontostand);
 		Kontostand.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Deposit");
-		btnNewButton.setBounds(306, 32, 117, 29);
+		TransparentButton btnNewButton = new TransparentButton("Deposit");
+		btnNewButton.setBounds(519, 247, 117, 64);
 		panel.add(btnNewButton);
 		
 		Einzahlbetrag = new JTextField();
-		Einzahlbetrag.setBounds(293, 65, 130, 26);
+		Einzahlbetrag.setFont(new Font("Lucida Grande", Font.PLAIN, 40));
+		Einzahlbetrag.setText("<Zahl>");
+		Einzahlbetrag.setBounds(648, 244, 155, 64);
+		Einzahlbetrag.setBackground(new Color (150, 150, 150, 128));
 		panel.add(Einzahlbetrag);
 		Einzahlbetrag.setColumns(10);
 		
-		JButton btnNewButton_1 = new JButton("Menu");
-		btnNewButton_1.addActionListener(new ActionListener() {
+		TransparentButton btnNewButton_8 = new TransparentButton("Menu");
+		btnNewButton_8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Menu menu = new Menu();
 				menu.setVisible(true);
 				}
 		});
-		btnNewButton_1.setBounds(6, 6, 117, 29);
-		panel.add(btnNewButton_1);
+		btnNewButton_8.setBounds(6, 6, 117, 29);
+		panel.add(btnNewButton_8);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setBounds(0, -14, 1024, 600);		
+		Image img = new ImageIcon(this.getClass().getResource("/Bank.png")).getImage();
+		lblNewLabel_1.setIcon(new ImageIcon(img));
+		panel.add(lblNewLabel_1);
 	}
 	public void setVisible(boolean visible) {
         frame.setVisible(visible);
     }
-	
 }

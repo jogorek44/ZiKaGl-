@@ -60,17 +60,17 @@ public class Menu {
 		frame.getContentPane().add(panel_1, BorderLayout.CENTER);
 		panel_1.setLayout(null);
 		
-		TransparentButton btnNewButton_2 = new TransparentButton("Bank Account");
-		btnNewButton_2.addActionListener(new ActionListener() {
+			TransparentButton btnNewButton_3 = new TransparentButton("Shop");
+		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				  Bank bank = new Bank();
-	                bank.setVisible(true);
+				  Shop shop = new Shop();
+	                shop.setVisible(true);
 	            }
 		});
-		btnNewButton_2.setFont(new Font("Dialog", Font.PLAIN, 20));
-		btnNewButton_2.setForeground(Color.WHITE);
-		btnNewButton_2.setBounds(6, 6, 223, 43);
-		panel_1.add(btnNewButton_2);
+		btnNewButton_3.setFont(new Font("Dialog", Font.PLAIN, 30));
+		btnNewButton_3.setForeground(Color.WHITE);
+		btnNewButton_3.setBounds(453, 362, 117, 54);
+		panel_1.add(btnNewButton_3);
 		
 		TransparentButton btnNewButton = new TransparentButton("Start");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -86,37 +86,40 @@ public class Menu {
 		
 			panel_1.add(btnNewButton);
 		
-			TransparentButton btnNewButton_3 = new TransparentButton("Shop");
-		btnNewButton_3.addActionListener(new ActionListener() {
+		TransparentButton btnNewButton_2 = new TransparentButton("Bank Account");
+		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				  Shop shop = new Shop();
-	                shop.setVisible(true);
+				  Bank bank = new Bank();
+	                bank.setVisible(true);
 	            }
 		});
-		btnNewButton_3.setFont(new Font("Dialog", Font.PLAIN, 30));
-		btnNewButton_3.setForeground(Color.WHITE);
-		btnNewButton_3.setBounds(453, 443, 117, 54);
-		panel_1.add(btnNewButton_3);
+		btnNewButton_2.setFont(new Font("Dialog", Font.PLAIN, 20));
+		btnNewButton_2.setForeground(Color.WHITE);
+		btnNewButton_2.setBounds(6, 6, 223, 43);
+		panel_1.add(btnNewButton_2);
 		
 		TransparentButton btnNewButton_1 = new TransparentButton("Settings");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				  Settings settings = new Settings();
 	                settings.setVisible(true);
 	            }
 		});
 		btnNewButton_1.setFont(new Font("Dialog", Font.PLAIN, 30));
 		btnNewButton_1.setForeground(Color.WHITE);
-		btnNewButton_1.setBounds(427, 324, 170, 82);
+		btnNewButton_1.setBounds(427, 268, 170, 82);
 		btnNewButton_1.setBackground(new Color(0,0,0,128));
 		panel_1.add(btnNewButton_1);
 		
+		
 		JLabel lblNewLabel = new JLabel("ZiKaGlü");
-		lblNewLabel.setForeground(new Color(255, 51, 51));
+		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 66));
-		lblNewLabel.setBounds(186, 6, 652, 71);
-		
+		lblNewLabel.setBounds(362, 6, 300, 71);
+		lblNewLabel.setBackground(new Color (0, 0, 0, 128));
+		lblNewLabel.setOpaque(true);
 		panel_1.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Home Menu");
