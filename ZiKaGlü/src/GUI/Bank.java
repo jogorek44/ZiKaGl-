@@ -53,9 +53,11 @@ public class Bank {
 		frame.setBounds(100, 100, 1024, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+		
 		JPanel panel = new JPanel();
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
+		
 		
 		JLabel lblNewLabel = new JLabel("Balance");
 		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 40));
@@ -71,8 +73,8 @@ public class Bank {
 		Kontostand.setBackground(new Color (150, 150, 150, 128));
 		Kontostand.setText("0");
 		Kontostand.setBounds(224, 247, 160, 64);
-		panel.add(Kontostand);
 		Kontostand.setColumns(10);
+		panel.add(Kontostand);
 		
 		
 		Einzahlbetrag = new JTextField();
@@ -80,11 +82,11 @@ public class Bank {
 		Einzahlbetrag.setText("0");
 		Einzahlbetrag.setBounds(648, 244, 155, 64);
 		Einzahlbetrag.setBackground(new Color (150, 150, 150, 128));
-		panel.add(Einzahlbetrag);
 		Einzahlbetrag.setColumns(10);
+		panel.add(Einzahlbetrag);
+		
 		
 		TransparentButton btnNewButton = new TransparentButton("Deposit");
-		
 		btnNewButton.setBounds(519, 247, 117, 64);
 		panel.add(btnNewButton);
 		
@@ -94,10 +96,12 @@ public class Bank {
 			public void actionPerformed(ActionEvent e) {
 				Menu menu = new Menu();
 				menu.setVisible(true);
+				frame.dispose();
 				}
 		});
 		btnNewButton_8.setBounds(6, 6, 117, 29);
 		panel.add(btnNewButton_8);
+		
 		
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setBounds(0, -14, 1024, 600);		

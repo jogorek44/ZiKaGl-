@@ -64,6 +64,7 @@ public class AdminView {
 			public void actionPerformed(ActionEvent e) {
 				Menu menu = new Menu();
 				menu.setVisible(true);
+				frame.dispose();
 				}
 		});
 		panel.add(btnNewButton);
@@ -92,57 +93,70 @@ public class AdminView {
 		panel.add(txtTable_3);
 		txtTable_3.setColumns(10);
 		
+		
 		JLabel lblNewLabel_1 = new JLabel("Table 1");
 		lblNewLabel_1.setBounds(6, 75, 61, 16);
 		panel.add(lblNewLabel_1);
+		
 		
 		JLabel lblNewLabel_2 = new JLabel("Table 2");
 		lblNewLabel_2.setBounds(148, 75, 61, 16);
 		panel.add(lblNewLabel_2);
 		
+		
 		JLabel lblNewLabel_3 = new JLabel("Table 3");
 		lblNewLabel_3.setBounds(6, 129, 61, 16);
 		panel.add(lblNewLabel_3);
+		
 		
 		JLabel lblNewLabel_4 = new JLabel("Table 4");
 		lblNewLabel_4.setBounds(148, 129, 61, 16);
 		panel.add(lblNewLabel_4);
 		
+		
 		JLabel lblNewLabel_1_1 = new JLabel("Table 1");
 		lblNewLabel_1_1.setBounds(311, 75, 61, 16);
 		panel.add(lblNewLabel_1_1);
 		
+		
 		JLabel lblBalance = new JLabel("Balance");
 		lblBalance.setBounds(311, 47, 61, 16);
 		panel.add(lblBalance);
+		
 		
 		textField = new JTextField();
 		textField.setColumns(10);
 		textField.setBounds(311, 91, 130, 26);
 		panel.add(textField);
 		
+		
 		JLabel lblNewLabel_3_1 = new JLabel("Table 3");
 		lblNewLabel_3_1.setBounds(311, 129, 61, 16);
 		panel.add(lblNewLabel_3_1);
+		
 		
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
 		textField_1.setBounds(311, 146, 130, 26);
 		panel.add(textField_1);
 		
+		
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
 		textField_2.setBounds(453, 146, 130, 29);
 		panel.add(textField_2);
 		
+		
 		JLabel lblNewLabel_4_1 = new JLabel("Table 4");
 		lblNewLabel_4_1.setBounds(453, 129, 61, 16);
 		panel.add(lblNewLabel_4_1);
+		
 		
 		textField_3 = new JTextField();
 		textField_3.setColumns(10);
 		textField_3.setBounds(453, 91, 130, 26);
 		panel.add(textField_3);
+		
 		
 		JLabel lblNewLabel_2_1 = new JLabel("Table 2");
 		lblNewLabel_2_1.setBounds(453, 75, 61, 16);

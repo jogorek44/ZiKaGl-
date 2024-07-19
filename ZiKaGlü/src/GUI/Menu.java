@@ -1,21 +1,17 @@
 package GUI;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Image;
-
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
+
 import javax.swing.SwingConstants;
 import java.awt.Color;
-import java.awt.SystemColor;
-import javax.swing.UIManager;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -59,37 +55,41 @@ public class Menu {
 		frame.getContentPane().add(panel_1, BorderLayout.CENTER);
 		panel_1.setLayout(null);
 		
+		
 			TransparentButton btnNewButton_3 = new TransparentButton("Shop");
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				  Shop shop = new Shop();
-	                shop.setVisible(true);
+	                shop.setVisible(true); //erstellt ein neues Fenster
+	                frame.dispose();//schließt das aktuelle Fenster
 	            }
-		});
+			});
 		btnNewButton_3.setFont(new Font("Dialog", Font.PLAIN, 30));
 		btnNewButton_3.setForeground(Color.WHITE);
 		btnNewButton_3.setBounds(453, 362, 117, 54);
 		panel_1.add(btnNewButton_3);
+		
 		
 		TransparentButton btnNewButton = new TransparentButton("Start");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				  BlackJack blackjack = new BlackJack();
 	                blackjack.setVisible(true);
+	                frame.dispose();
 	            }
-		});
+			});
 		btnNewButton.setFont(new Font("Dialog", Font.PLAIN, 30));
 		btnNewButton.setForeground(Color.WHITE);
-		
 		btnNewButton.setBounds(453, 202, 117, 54);
+		panel_1.add(btnNewButton);
 		
-			panel_1.add(btnNewButton);
 		
 		TransparentButton btnNewButton_2 = new TransparentButton("Bank Account");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				  Bank bank = new Bank();
 	                bank.setVisible(true);
+	                frame.dispose();
 	            }
 		});
 		btnNewButton_2.setFont(new Font("Dialog", Font.PLAIN, 20));
@@ -97,12 +97,13 @@ public class Menu {
 		btnNewButton_2.setBounds(6, 6, 223, 43);
 		panel_1.add(btnNewButton_2);
 		
+		
 		TransparentButton btnNewButton_1 = new TransparentButton("Settings");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
 				  Settings settings = new Settings();
 	                settings.setVisible(true);
+	                frame.dispose();
 	            }
 		});
 		btnNewButton_1.setFont(new Font("Dialog", Font.PLAIN, 30));
@@ -120,6 +121,7 @@ public class Menu {
 		lblNewLabel.setBackground(new Color (0, 0, 0, 128));
 		lblNewLabel.setOpaque(true);
 		panel_1.add(lblNewLabel);
+		
 		
 		JLabel lblNewLabel_1 = new JLabel("Home Menu");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -140,6 +142,7 @@ public class Menu {
 		lblNewLabel_2.setOpaque(true);
 		lblNewLabel_2.setBounds(432, 158, 159, 32);
 		panel_1.add(lblNewLabel_2);
+		
 		
 		JLabel lblNewLabel_3 = new JLabel("");
 		lblNewLabel_3.setBounds(0, -14, 1024, 600);

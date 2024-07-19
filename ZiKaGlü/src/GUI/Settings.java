@@ -1,14 +1,11 @@
 package GUI;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
-import java.awt.Color;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
+import java.awt.Color;
 import javax.swing.JTextPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -48,24 +45,29 @@ public class Settings {
 		frame.setBounds(100, 100, 1024, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+		
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.LIGHT_GRAY);
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
+		
 		
 		TransparentButton btnNewButton_5= new TransparentButton("Menu");
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Menu menu = new Menu();
 				menu.setVisible(true);
+				frame.dispose();
 				}
 		});
 		btnNewButton_5.setBounds(6, 6, 117, 29);
 		panel.add(btnNewButton_5);
 		
+		
 		TransparentButton btnNewButton_1 = new TransparentButton("Accessebility Mode");
 		btnNewButton_1.setBounds(418, 39, 187, 29);
 		panel.add(btnNewButton_1);
+		
 		
 		JTextPane txtpnHierStehtDie = new JTextPane();
 		txtpnHierStehtDie.setEditable(false);

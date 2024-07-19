@@ -11,7 +11,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -69,36 +68,43 @@ public class BlackJack {
 			public void actionPerformed(ActionEvent e) {
 				Menu menu = new Menu();
 				menu.setVisible(true);
+				frame.dispose();
 				}
 		});
 		panel.add(btnNewButton_8);
+		
 		
 		TransparentButton btnNewButton_1 = new TransparentButton("Draw a Card");
 		btnNewButton_1.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
 		btnNewButton_1.setBounds(324, 372, 193, 70);
 		panel.add(btnNewButton_1);
 		
+		
 		TransparentButton btnNewButton_2 = new TransparentButton("Bet");
 		btnNewButton_2.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		btnNewButton_2.setBounds(174, 479, 117, 32);
 		panel.add(btnNewButton_2);
+		
 		
 		TransparentButton btnNewButton_3 = new TransparentButton("Split");
 		btnNewButton_3.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
 		btnNewButton_3.setBounds(693, 372, 117, 70);
 		panel.add(btnNewButton_3);
 		
+		
 		TransparentButton btnNewButton_6 = new TransparentButton("Test");
 		btnNewButton_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				  Shop shop = new Shop();
 	                shop.setVisible(true);
+	                frame.dispose();
 	            }
 		});
 		btnNewButton_6.setText("Shop");
 		btnNewButton_6.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		btnNewButton_6.setBounds(6, 57, 117, 32);
 		panel.add(btnNewButton_6);
+		
 		
 		dealersCards = new JTextField();
 		dealersCards.setHorizontalAlignment(SwingConstants.CENTER);
@@ -107,8 +113,9 @@ public class BlackJack {
 		dealersCards.setText("<Karte>");
 		dealersCards.setBounds(184, 76, 130, 157);
 		dealersCards.setBackground(new Color (150, 150, 150, 128));
-		panel.add(dealersCards);
 		dealersCards.setColumns(10);
+		panel.add(dealersCards);
+		
 		
 		yourCards = new JTextField();
 		yourCards.setHorizontalAlignment(SwingConstants.CENTER);
@@ -117,8 +124,9 @@ public class BlackJack {
 		yourCards.setBackground(new Color (150, 150, 150, 128));
 		yourCards.setText("<Karte>");
 		yourCards.setBounds(680, 76, 130, 169);
-		panel.add(yourCards);
 		yourCards.setColumns(10);
+		panel.add(yourCards);
+		
 		
 		JLabel lblNewLabel = new JLabel("Dealer's Cards");
 		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 27));
@@ -126,6 +134,7 @@ public class BlackJack {
 		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setBounds(174, 32, 213, 49);
 		panel.add(lblNewLabel);
+		
 		
 		JLabel lblNewLabel_1 = new JLabel("Your Cards");
 		lblNewLabel_1.setFont(new Font("Lucida Grande", Font.PLAIN, 27));
@@ -142,51 +151,56 @@ public class BlackJack {
 		balance.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		balance.setBounds(860, 43, 130, 32);
 		balance.setBackground(new Color (150, 150, 150, 128));
-		panel.add(balance);
 		balance.setColumns(10);
+		panel.add(balance);
+		
 		
 		JLabel lblNewLabel_2 = new JLabel("Balance");
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_2.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
 		lblNewLabel_2.setForeground(Color.WHITE);
-		
 		lblNewLabel_2.setBounds(845, 7, 130, 38);
 		panel.add(lblNewLabel_2);
+		
 		
 		amountToBet = new JTextField();
 		amountToBet.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		amountToBet.setForeground(Color.WHITE);
 		amountToBet.setBounds(303, 478, 130, 32);
 		amountToBet.setBackground(new Color (150, 150, 150, 128));
-		panel.add(amountToBet);
 		amountToBet.setColumns(10);
+		panel.add(amountToBet);
+		
 		
 		TransparentButton btnNewButton_4 = new TransparentButton("All In");
 		btnNewButton_4.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		btnNewButton_4.setBounds(172, 523, 117, 32);
 		panel.add(btnNewButton_4);
 		
+		
 		TransparentButton btnNewButton_5 = new TransparentButton("Stand");
 		btnNewButton_5.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
 		btnNewButton_5.setBounds(192, 372, 117, 70);
 		panel.add(btnNewButton_5);
+		
 		
 		TransparentButton btnNewButton_7 = new TransparentButton("Double");
 		btnNewButton_7.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
 		btnNewButton_7.setBounds(529, 372, 152, 70);
 		panel.add(btnNewButton_7);
 		
+		
 		winOrLoss = new JTextField("Loss!");
 		winOrLoss.setFont(new Font("Lucida Grande", Font.PLAIN, 70));
 		winOrLoss.setHorizontalAlignment(SwingConstants.CENTER);
 		winOrLoss.setEditable(false);
 		winOrLoss.setForeground(Color.BLACK);
-		
 		//winOrLoss.setOpaque(false);   Später Kommentar entfernen Damit Feld nicht sichtbar ist
 		//winOrLoss.setBorder(null);
 		winOrLoss.setBounds(358, 216, 275, 86);
-		panel.add(winOrLoss);
 		winOrLoss.setColumns(10);
+		panel.add(winOrLoss);
+		
 		
 		JLabel lblNewLabel_3= new JLabel("");
 		lblNewLabel_3.setBounds(0, -14, 1024, 600);		

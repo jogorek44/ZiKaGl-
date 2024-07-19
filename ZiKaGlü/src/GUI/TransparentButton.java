@@ -10,7 +10,9 @@ import javax.swing.JButton;
 
 public class TransparentButton extends JButton {
 
-    public TransparentButton(String text) {
+    private static final long serialVersionUID = 1L;
+
+	public TransparentButton(String text) {
         super(text);
         setOpaque(false);
         setContentAreaFilled(false);
