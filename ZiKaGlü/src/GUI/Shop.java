@@ -85,7 +85,7 @@ public class Shop   {
 		lblNewLabel_1.setForeground(Color.WHITE);
 		lblNewLabel_1.setBackground(new Color (0, 0, 0, 128));
 		lblNewLabel_1.setOpaque(true);
-		lblNewLabel_1.setBounds(174, 313, 61, 16);
+		lblNewLabel_1.setBounds(259, 313, 61, 16);
 		panel.add(lblNewLabel_1);
 		
 		
@@ -112,7 +112,7 @@ public class Shop   {
 		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_4.setBackground(new Color (0, 0, 0, 128));
 		lblNewLabel_4.setOpaque(true);
-		lblNewLabel_4.setBounds(174, 341, 61, 16);
+		lblNewLabel_4.setBounds(259, 341, 61, 16);
 		panel.add(lblNewLabel_4);
 		
 		
@@ -131,7 +131,7 @@ public class Shop   {
 		
 		
 		TransparentButton btnNewButton_1_1 = new TransparentButton("Add");
-		btnNewButton_1_1.setBounds(144, 369, 117, 32);
+		btnNewButton_1_1.setBounds(229, 369, 117, 32);
 		panel.add(btnNewButton_1_1);
 		
 		
@@ -191,11 +191,20 @@ public class Shop   {
 		panel.add(lblNewLabel_8);
 		
 		
+			JLabel lblNewLabel_9 = new JLabel("New label");
+		lblNewLabel_9.setBounds(219, 56, 135, 250);
+		Image img_4 = new ImageIcon(this.getClass().getResource("/Cigarett.jpg")).getImage();
+		lblNewLabel_9.setIcon(new ImageIcon(img_4));
+		panel.add(lblNewLabel_9);
+		
+		
 		JLabel lblNewLabel_6 = new JLabel("");
 		lblNewLabel_6.setBounds(0, -28, 1024, 600);		
 		Image img = new ImageIcon(this.getClass().getResource("/Shop.jpeg")).getImage();
 		lblNewLabel_6.setIcon(new ImageIcon(img));
 		panel.add(lblNewLabel_6);
+		
+	
 		
 		
 	}
