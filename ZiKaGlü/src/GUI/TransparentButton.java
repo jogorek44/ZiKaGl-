@@ -28,7 +28,7 @@ public class TransparentButton extends JButton {
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         
         // Set the color with transparency
-        g2d.setColor(new Color(0, 0, 0, 128));
+        g2d.setColor(new Color(0, 0, 0, 190));
         
         // Draw the rounded rectangle
         g2d.fillRoundRect(0, 0, getWidth(), getHeight(), 15, 15);

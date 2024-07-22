@@ -174,7 +174,7 @@ public class BlackJack {
 		
 		TransparentButton btnNewButton_4 = new TransparentButton("All In");
 		btnNewButton_4.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		btnNewButton_4.setBounds(172, 523, 117, 32);
+		btnNewButton_4.setBounds(174, 523, 117, 32);
 		panel.add(btnNewButton_4);
 		
 		

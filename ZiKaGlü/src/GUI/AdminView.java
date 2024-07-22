@@ -10,18 +10,20 @@ import java.awt.BorderLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import java.awt.Color;
+import java.awt.Font;
 
 public class AdminView {
 
 	private JFrame frame;
-	private JTextField txtTable;
-	private JTextField txtTable_1;
-	private JTextField txtTable_2;
-	private JTextField txtTable_3;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
+	private JTextField textField_4;
+	private JTextField textField_5;
+	private JTextField textField_6;
+	private JTextField textField_7;
 
 	/**
 	 * Launch the application.
@@ -55,6 +57,7 @@ public class AdminView {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
+		panel.setBackground(new Color(0, 128, 0));
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 		
@@ -69,98 +72,115 @@ public class AdminView {
 		});
 		panel.add(btnNewButton);
 		
-		JLabel lblNewLabel = new JLabel("Orders");
-		lblNewLabel.setBounds(6, 47, 61, 16);
-		panel.add(lblNewLabel);
-		
-		txtTable = new JTextField();
-		txtTable.setBounds(6, 91, 130, 26);
-		panel.add(txtTable);
-		txtTable.setColumns(10);
-		
-		txtTable_1 = new JTextField();
-		txtTable_1.setBounds(148, 91, 130, 26);
-		panel.add(txtTable_1);
-		txtTable_1.setColumns(10);
-		
-		txtTable_2 = new JTextField();
-		txtTable_2.setBounds(6, 146, 130, 26);
-		panel.add(txtTable_2);
-		txtTable_2.setColumns(10);
-		
-		txtTable_3 = new JTextField();
-		txtTable_3.setBounds(148, 146, 130, 26);
-		panel.add(txtTable_3);
-		txtTable_3.setColumns(10);
-		
-		
-		JLabel lblNewLabel_1 = new JLabel("Table 1");
-		lblNewLabel_1.setBounds(6, 75, 61, 16);
-		panel.add(lblNewLabel_1);
-		
-		
-		JLabel lblNewLabel_2 = new JLabel("Table 2");
-		lblNewLabel_2.setBounds(148, 75, 61, 16);
-		panel.add(lblNewLabel_2);
-		
-		
-		JLabel lblNewLabel_3 = new JLabel("Table 3");
-		lblNewLabel_3.setBounds(6, 129, 61, 16);
-		panel.add(lblNewLabel_3);
-		
-		
-		JLabel lblNewLabel_4 = new JLabel("Table 4");
-		lblNewLabel_4.setBounds(148, 129, 61, 16);
-		panel.add(lblNewLabel_4);
-		
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Table 1");
-		lblNewLabel_1_1.setBounds(311, 75, 61, 16);
+		lblNewLabel_1_1.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
+		lblNewLabel_1_1.setBounds(549, 188, 117, 29);
 		panel.add(lblNewLabel_1_1);
 		
 		
 		JLabel lblBalance = new JLabel("Balance");
-		lblBalance.setBounds(311, 47, 61, 16);
+		lblBalance.setFont(new Font("Lucida Grande", Font.PLAIN, 30));
+		lblBalance.setBounds(549, 146, 130, 43);
 		panel.add(lblBalance);
 		
 		
 		textField = new JTextField();
 		textField.setColumns(10);
-		textField.setBounds(311, 91, 130, 26);
+		textField.setBounds(549, 230, 218, 94);
 		panel.add(textField);
 		
 		
 		JLabel lblNewLabel_3_1 = new JLabel("Table 3");
-		lblNewLabel_3_1.setBounds(311, 129, 61, 16);
+		lblNewLabel_3_1.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
+		lblNewLabel_3_1.setBounds(549, 347, 135, 43);
 		panel.add(lblNewLabel_3_1);
 		
 		
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
-		textField_1.setBounds(311, 146, 130, 26);
+		textField_1.setBounds(550, 397, 218, 94);
 		panel.add(textField_1);
 		
 		
 		textField_2 = new JTextField();
+		textField_2.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
 		textField_2.setColumns(10);
-		textField_2.setBounds(453, 146, 130, 29);
+		textField_2.setBounds(789, 396, 218, 94);
 		panel.add(textField_2);
 		
 		
 		JLabel lblNewLabel_4_1 = new JLabel("Table 4");
-		lblNewLabel_4_1.setBounds(453, 129, 61, 16);
+		lblNewLabel_4_1.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
+		lblNewLabel_4_1.setBounds(789, 353, 135, 31);
 		panel.add(lblNewLabel_4_1);
 		
 		
 		textField_3 = new JTextField();
 		textField_3.setColumns(10);
-		textField_3.setBounds(453, 91, 130, 26);
+		textField_3.setBounds(789, 230, 218, 94);
 		panel.add(textField_3);
 		
 		
 		JLabel lblNewLabel_2_1 = new JLabel("Table 2");
-		lblNewLabel_2_1.setBounds(453, 75, 61, 16);
+		lblNewLabel_2_1.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
+		lblNewLabel_2_1.setBounds(789, 187, 156, 31);
 		panel.add(lblNewLabel_2_1);
+		
+		
+		JLabel lblOrder = new JLabel("Order");
+		lblOrder.setFont(new Font("Lucida Grande", Font.PLAIN, 30));
+		lblOrder.setBounds(18, 146, 130, 43);
+		panel.add(lblOrder);
+		
+		
+		JLabel lblNewLabel_1_1_1 = new JLabel("Table 1");
+		lblNewLabel_1_1_1.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
+		lblNewLabel_1_1_1.setBounds(18, 188, 117, 29);
+		panel.add(lblNewLabel_1_1_1);
+		
+		
+		textField_4 = new JTextField();
+		textField_4.setColumns(10);
+		textField_4.setBounds(18, 230, 218, 94);
+		panel.add(textField_4);
+		
+		
+		JLabel lblNewLabel_3_1_1 = new JLabel("Table 3");
+		lblNewLabel_3_1_1.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
+		lblNewLabel_3_1_1.setBounds(18, 347, 135, 43);
+		panel.add(lblNewLabel_3_1_1);
+		
+		
+		textField_5 = new JTextField();
+		textField_5.setColumns(10);
+		textField_5.setBounds(19, 397, 218, 94);
+		panel.add(textField_5);
+		
+		
+		textField_6 = new JTextField();
+		textField_6.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
+		textField_6.setColumns(10);
+		textField_6.setBounds(258, 396, 218, 94);
+		panel.add(textField_6);
+		
+		
+		JLabel lblNewLabel_4_1_1 = new JLabel("Table 4");
+		lblNewLabel_4_1_1.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
+		lblNewLabel_4_1_1.setBounds(258, 353, 135, 31);
+		panel.add(lblNewLabel_4_1_1);
+		
+		
+		textField_7 = new JTextField();
+		textField_7.setColumns(10);
+		textField_7.setBounds(258, 230, 218, 94);
+		panel.add(textField_7);
+		
+		
+		JLabel lblNewLabel_2_1_1 = new JLabel("Table 2");
+		lblNewLabel_2_1_1.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
+		lblNewLabel_2_1_1.setBounds(258, 187, 156, 31);
+		panel.add(lblNewLabel_2_1_1);
 	}
 	public void setVisible(boolean visible) {
         frame.setVisible(visible);

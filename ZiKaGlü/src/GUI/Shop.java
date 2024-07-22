@@ -13,6 +13,7 @@ import java.awt.Color;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
@@ -21,7 +22,11 @@ public class Shop   {
 	private JFrame frame;
 	private JTextField txtShoppingCart;
 	private JTextField txtSum;
-
+	private int beerQuantity=0;
+	private int coffeeQuantity=0;
+	private int cigarettesQuantity = 0;
+	public double price=0;
+	public String menge;
 	/**
 	 * Launch the application.
 	 */
@@ -59,17 +64,17 @@ public class Shop   {
 		panel.setLayout(null);
 		
 		
-		TransparentButton btnNewButton_4 = new TransparentButton("Menu");
-		btnNewButton_4.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		btnNewButton_4.setBounds(6, 6, 137, 32);
-		btnNewButton_4.addActionListener(new ActionListener() {
+		TransparentButton btnNewButton = new TransparentButton("Menu");
+		btnNewButton.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		btnNewButton.setBounds(6, 6, 137, 32);
+		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Menu menu = new Menu();
 				menu.setVisible(true);
 				frame.dispose();
 				}
 		});
-		panel.add(btnNewButton_4);
+		panel.add(btnNewButton);
 		
 		
 		JLabel lblNewLabel = new JLabel("Beer");
@@ -126,43 +131,78 @@ public class Shop   {
 		
 		
 		TransparentButton btnNewButton_1 = new TransparentButton("Add");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				beerQuantity++;
+				price=beerQuantity*3+(coffeeQuantity*2.5)+(8*cigarettesQuantity);
+				String stringZahl = Double.toString(price);
+				txtSum.setText("$"+stringZahl);
+				menge= beerQuantity+"x Beer, "+coffeeQuantity+"x Coffee and "+cigarettesQuantity+"x Cigarettes";
+				txtShoppingCart.setText(menge);
+			}
+		});
 		btnNewButton_1.setBounds(434, 369, 117, 32);
 		panel.add(btnNewButton_1);
 		
 		
-		TransparentButton btnNewButton_1_1 = new TransparentButton("Add");
-		btnNewButton_1_1.setBounds(229, 369, 117, 32);
-		panel.add(btnNewButton_1_1);
-		
-		
-		TransparentButton btnNewButton_1_2 = new TransparentButton("Add");
-		btnNewButton_1_2.setBounds(728, 369, 117, 32);
-		panel.add(btnNewButton_1_2);
-		
-		
-		TransparentButton btnNewButton_2 = new TransparentButton("Checkout");
-		btnNewButton_2.setBounds(853, 498, 117, 32);
+		TransparentButton btnNewButton_2= new TransparentButton("Add");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cigarettesQuantity++;
+				price=beerQuantity*3+(coffeeQuantity*2.5)+(8*cigarettesQuantity);
+				String stringZahl = Double.toString(price);
+				txtSum.setText("$"+stringZahl);
+				menge= beerQuantity+"x Beer, "+coffeeQuantity+"x Coffee and "+cigarettesQuantity+"x Cigarettes";
+				txtShoppingCart.setText(menge);
+			}
+		});
+		btnNewButton_2.setBounds(229, 369, 117, 32);
 		panel.add(btnNewButton_2);
 		
 		
-		TransparentButton btnNewButton = new TransparentButton("BlackJack");
-		btnNewButton.addActionListener(new ActionListener() {
+		TransparentButton btnNewButton_3 = new TransparentButton("Add");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				coffeeQuantity++;
+				price=beerQuantity*3+(coffeeQuantity*2.5)+(8*cigarettesQuantity);
+				String stringZahl = Double.toString(price);
+				txtSum.setText("$"+stringZahl);
+				menge= beerQuantity+"x Beer, "+coffeeQuantity+"x Coffee and "+cigarettesQuantity+"x Cigarettes";
+				txtShoppingCart.setText(menge);
+			}
+		});
+		btnNewButton_3.setBounds(728, 369, 117, 32);
+		panel.add(btnNewButton_3);
+		
+		
+		TransparentButton btnNewButton_4 = new TransparentButton("Checkout");
+		btnNewButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(frame, "Deine Bestellung von "+menge+" für $"+price+" wird vorbereitet!");
+			}
+		});
+		btnNewButton_4.setBounds(853, 498, 117, 32);
+		panel.add(btnNewButton_4);
+		
+		
+		TransparentButton btnNewButton_5 = new TransparentButton("BlackJack");
+		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				  BlackJack blackjack = new BlackJack();
 	                blackjack.setVisible(true);
 	                frame.dispose();
 	            }
 		});
-		btnNewButton.setFont(new Font("Dialog", Font.PLAIN, 20));
-		btnNewButton.setForeground(Color.WHITE);
-		btnNewButton.setBounds(6, 50, 145, 32);
-		panel.add(btnNewButton);
+		btnNewButton_5.setFont(new Font("Dialog", Font.PLAIN, 20));
+		btnNewButton_5.setForeground(Color.WHITE);
+		btnNewButton_5.setBounds(6, 50, 145, 32);
+		panel.add(btnNewButton_5);
 		
 		
 		txtShoppingCart = new JTextField();
 		txtShoppingCart.setForeground(Color.WHITE);
 		txtShoppingCart.setText("Shopping Cart");
-		txtShoppingCart.setBounds(460, 498, 130, 32);
+		txtShoppingCart.setBounds(313, 497, 304, 32);
 		txtShoppingCart.setBackground(new Color (150, 150, 150, 128));
 		txtShoppingCart.setColumns(10);
 		panel.add(txtShoppingCart);
@@ -170,43 +210,41 @@ public class Shop   {
 		
 		txtSum = new JTextField();
 		txtSum.setForeground(Color.WHITE);
-		txtSum.setText("Sum");
+		txtSum.setText("0");
 		txtSum.setBounds(670, 498, 130, 32);
 		txtSum.setBackground(new Color (150, 150, 150, 128));
 		txtSum.setColumns(10);
 		panel.add(txtSum);
 	
 		
-		JLabel lblNewLabel_7 = new JLabel("");
-		lblNewLabel_7.setBounds(409, 56, 167, 250);
-		panel.add(lblNewLabel_7);
+		JLabel picture_1 = new JLabel("");
+		picture_1.setBounds(409, 56, 167, 250);
+		panel.add(picture_1);
 		Image img_2 = new ImageIcon(this.getClass().getResource("/Beer.jpeg")).getImage();
-		lblNewLabel_7.setIcon(new ImageIcon(img_2));
+		picture_1.setIcon(new ImageIcon(img_2));
 		
 		
-		JLabel lblNewLabel_8 = new JLabel("");
-		lblNewLabel_8.setBounds(626, 61, 312, 240);
+		JLabel picture_2 = new JLabel("");
+		picture_2.setBounds(626, 61, 312, 240);
 		Image img_3 = new ImageIcon(this.getClass().getResource("/Caffee.png")).getImage();
-		lblNewLabel_8.setIcon(new ImageIcon(img_3));
-		panel.add(lblNewLabel_8);
+		picture_2.setIcon(new ImageIcon(img_3));
+		panel.add(picture_2);
 		
 		
-			JLabel lblNewLabel_9 = new JLabel("New label");
-		lblNewLabel_9.setBounds(219, 56, 135, 250);
+		JLabel picture_3 = new JLabel("");
+		picture_3.setBounds(219, 56, 135, 250);
 		Image img_4 = new ImageIcon(this.getClass().getResource("/Cigarett.jpg")).getImage();
-		lblNewLabel_9.setIcon(new ImageIcon(img_4));
-		panel.add(lblNewLabel_9);
+		picture_3.setIcon(new ImageIcon(img_4));
+		panel.add(picture_3);
 		
 		
-		JLabel lblNewLabel_6 = new JLabel("");
-		lblNewLabel_6.setBounds(0, -28, 1024, 600);		
+		JLabel picture_4 = new JLabel("");
+		picture_4.setBounds(0, -28, 1024, 600);		
 		Image img = new ImageIcon(this.getClass().getResource("/Shop.jpeg")).getImage();
-		lblNewLabel_6.setIcon(new ImageIcon(img));
-		panel.add(lblNewLabel_6);
+		picture_4.setIcon(new ImageIcon(img));
+		panel.add(picture_4);
 		
-	
-		
-		
+
 	}
 	public void setVisible(boolean visible) {
         frame.setVisible(visible);
