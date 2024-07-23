@@ -20,6 +20,8 @@ public class Menu {
 	private JFrame frame;
 
 	/**
+
+
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
@@ -46,7 +48,8 @@ public class Menu {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
+		frame = new JFrame("MENU");
+		frame.setResizable(false);
 		frame.setBounds(100, 100, 1024, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		

@@ -52,7 +52,7 @@ public class BlackJack {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
+		frame = new JFrame("BLACKJACK");
 		frame.setBounds(100, 100, 1024, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		

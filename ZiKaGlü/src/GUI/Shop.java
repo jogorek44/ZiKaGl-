@@ -17,9 +17,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+
 public class Shop   {
 
-	private JFrame frame;
+	private JFrame frmshop;
 	private JTextField txtShoppingCart;
 	private JTextField txtSum;
 	private int beerQuantity=0;
@@ -27,19 +28,19 @@ public class Shop   {
 	private int cigarettesQuantity = 0;
 	public double price=0;
 	public String menge;
-	/**
-	 * Launch the application.
-	 */
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					Shop window = new Shop();
-					window.frame.setVisible(true);
+
+					window.frmshop.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
+			
 		});
 	}
 
@@ -54,13 +55,16 @@ public class Shop   {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 1024, 600);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+		frmshop = new JFrame();
+		frmshop.setTitle("SHOP");
+		frmshop.setResizable(false);
+		frmshop.setIconImage (new ImageIcon (this.getClass().getResource("/Shop_1.png")).getImage()) ;
+		frmshop.setVisible(true);
+		frmshop.setBounds(100, 100, 1024, 600);
+		frmshop.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
-		frame.getContentPane().add(panel, BorderLayout.CENTER);
+		frmshop.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 		
 		
@@ -71,7 +75,7 @@ public class Shop   {
 			public void actionPerformed(ActionEvent e) {
 				Menu menu = new Menu();
 				menu.setVisible(true);
-				frame.dispose();
+				frmshop.dispose();
 				}
 		});
 		panel.add(btnNewButton);
@@ -178,7 +182,7 @@ public class Shop   {
 		TransparentButton btnNewButton_4 = new TransparentButton("Checkout");
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(frame, "Deine Bestellung von "+menge+" für $"+price+" wird vorbereitet!");
+				JOptionPane.showMessageDialog(frmshop, "Deine Bestellung von "+menge+" für $"+price+" wird vorbereitet!");
 			}
 		});
 		btnNewButton_4.setBounds(853, 498, 117, 32);
@@ -190,7 +194,7 @@ public class Shop   {
 			public void actionPerformed(ActionEvent e) {
 				  BlackJack blackjack = new BlackJack();
 	                blackjack.setVisible(true);
-	                frame.dispose();
+	                frmshop.dispose();
 	            }
 		});
 		btnNewButton_5.setFont(new Font("Dialog", Font.PLAIN, 20));
@@ -247,6 +251,6 @@ public class Shop   {
 
 	}
 	public void setVisible(boolean visible) {
-        frame.setVisible(visible);
+        frmshop.setVisible(visible);
     }
 }
