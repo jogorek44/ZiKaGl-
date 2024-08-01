@@ -15,11 +15,16 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.SystemColor;
 import java.awt.Font;
+import java.awt.Label;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class Bank {
 
 	private JFrame frame;
-	static JTextField Kontostand;
+	static Label Kontostand;
 	private JTextField Einzahlbetrag;
 
 	/**
@@ -58,6 +63,14 @@ public class Bank {
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 		
+		Kontostand = new Label("0");
+		Kontostand.setForeground(Color.BLACK);
+		Kontostand.setFont(new Font("Lucida Grande", Font.PLAIN, 40));
+		Kontostand.setBackground(new Color (150, 150, 150, 128));
+		Kontostand.setText("0");
+		Kontostand.setBounds(224, 247, 160, 64);
+		panel.add(Kontostand);
+		
 		
 		JLabel lblNewLabel = new JLabel("Balance");
 		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 40));
@@ -66,20 +79,11 @@ public class Bank {
 		panel.add(lblNewLabel);
 		
 		
-		Kontostand = new JTextField();
-		Kontostand.setForeground(Color.BLACK);
-		Kontostand.setEditable(false);
-		Kontostand.setFont(new Font("Lucida Grande", Font.PLAIN, 40));
-		Kontostand.setBackground(new Color (150, 150, 150, 128));
-		Kontostand.setText("0");
-		Kontostand.setBounds(224, 247, 160, 64);
-		Kontostand.setColumns(10);
-		panel.add(Kontostand);
 		
 		
 		Einzahlbetrag = new JTextField();
 		Einzahlbetrag.setFont(new Font("Lucida Grande", Font.PLAIN, 40));
-		Einzahlbetrag.setText("0");
+		Einzahlbetrag.setText("");
 		Einzahlbetrag.setBounds(648, 244, 155, 64);
 		Einzahlbetrag.setBackground(new Color (150, 150, 150, 128));
 		Einzahlbetrag.setColumns(10);
@@ -87,6 +91,13 @@ public class Bank {
 		
 		
 		TransparentButton btnNewButton = new TransparentButton("Deposit");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Kontostand.setText(String.valueOf(Double.valueOf(Kontostand.getText())+Double.valueOf(Einzahlbetrag.getText())));
+				Einzahlbetrag.setText("");
+			}
+		});
 		btnNewButton.setBounds(519, 247, 117, 64);
 		panel.add(btnNewButton);
 		
