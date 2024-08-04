@@ -2,6 +2,7 @@ package GUI;
 
 import java.awt.EventQueue;
 import java.awt.Image;
+import java.awt.*;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -11,6 +12,8 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
+import javax.swing.*;
+import java.io.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.SystemColor;
@@ -24,13 +27,18 @@ import java.awt.event.KeyEvent;
 public class Bank {
 
 	private JFrame frame;
-	static Label Kontostand;
-	private JTextField Einzahlbetrag;
+	static Label balanceLabel;
+	private JTextField balanceField;
+	private static double balance = 0.0;
+    private static final String BALANCE_FILE = "balance.txt";
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		// Kontostand aus Datei laden
+        loadBalanceFromFile();
+        
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -43,6 +51,29 @@ public class Bank {
 		});
 	}
 
+    // Methode zum Laden des Kontostands aus Datei
+	private static void loadBalanceFromFile() {
+		try (BufferedReader reader = new BufferedReader(new FileReader(BALANCE_FILE))) {
+            String line = reader.readLine();
+            if (line != null) {
+                balance = Double.parseDouble(line);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("Balance file not found, starting with balance 0.0");
+        } catch (IOException | NumberFormatException e) {
+            System.out.println("Error reading balance file, starting with balance 0.0");
+        }		
+	}
+	
+	// Methode zum Speichern des Kontostands in Datei
+    private static void saveBalanceToFile() {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(BALANCE_FILE))) {
+            writer.write(String.format("%.2f", balance));
+        } catch (IOException e) {
+            System.out.println("Error saving balance to file");
+        }
+    }
+
 	/**
 	 * Create the application.
 	 */
@@ -54,7 +85,7 @@ public class Bank {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
+		frame = new JFrame("Bank Account");
 		frame.setBounds(100, 100, 1024, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -63,39 +94,47 @@ public class Bank {
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 		
-		Kontostand = new Label("0");
-		Kontostand.setForeground(Color.BLACK);
-		Kontostand.setFont(new Font("Lucida Grande", Font.PLAIN, 40));
-		Kontostand.setBackground(new Color (150, 150, 150, 128));
-		Kontostand.setText("0");
-		Kontostand.setBounds(224, 247, 160, 64);
-		panel.add(Kontostand);
+		//Kontostandanzeige
+		balanceLabel = new Label("Balance");
+		balanceLabel.setForeground(Color.BLACK);
+		balanceLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 40));
+		balanceLabel.setBackground(new Color (150, 150, 150, 128));
+		balanceLabel.setText(String.format("%.2f", balance));
+		balanceLabel.setBounds(224, 247, 160, 64);
 		
+		panel.add(balanceLabel);
 		
+		//"Balance"-Schriftzug
 		JLabel lblNewLabel = new JLabel("Balance");
 		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 40));
 		lblNewLabel.setBackground(SystemColor.text);
 		lblNewLabel.setBounds(42, 247, 155, 64);
 		panel.add(lblNewLabel);
 		
+		//Eingabe des Amounts
+		balanceField = new JTextField();
+		balanceField.setFont(new Font("Lucida Grande", Font.PLAIN, 40));
+		balanceField.setText("");
+		balanceField.setBounds(648, 244, 155, 64);
+		balanceField.setBackground(new Color (150, 150, 150, 128));
+		balanceField.setColumns(10);
+		panel.add(balanceField);
 		
-		
-		
-		Einzahlbetrag = new JTextField();
-		Einzahlbetrag.setFont(new Font("Lucida Grande", Font.PLAIN, 40));
-		Einzahlbetrag.setText("");
-		Einzahlbetrag.setBounds(648, 244, 155, 64);
-		Einzahlbetrag.setBackground(new Color (150, 150, 150, 128));
-		Einzahlbetrag.setColumns(10);
-		panel.add(Einzahlbetrag);
-		
-		
+		//Deposit-button
 		TransparentButton btnNewButton = new TransparentButton("Deposit");
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Kontostand.setText(String.valueOf(Double.valueOf(Kontostand.getText())+Double.valueOf(Einzahlbetrag.getText())));
-				Einzahlbetrag.setText("");
+				try {
+					//balanceLabel.setText(String.valueOf(Double.valueOf(balanceLabel.getText())+Double.valueOf(balanceField.getText())));
+					//balanceField.setText("");
+					double amount = Double.parseDouble(balanceField.getText());
+                    balance += amount;
+                    balanceLabel.setText(String.format("%.2f", balance));
+                    balanceField.setText("");
+                    saveBalanceToFile();
+				} catch (NumberFormatException ex) {
+					JOptionPane.showMessageDialog(frame, "Please enter a valid amount", "Error", JOptionPane.ERROR_MESSAGE);				}
 			}
 		});
 		btnNewButton.setBounds(519, 247, 117, 64);
