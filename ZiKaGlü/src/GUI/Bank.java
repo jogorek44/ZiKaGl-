@@ -11,6 +11,9 @@ import java.awt.Color;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+
+
+
 import javax.swing.ImageIcon;
 import javax.swing.*;
 import java.io.*;
@@ -23,21 +26,23 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import Logic.BalanceFileHandler;
 
 public class Bank {
 
 	private JFrame frame;
 	static Label balanceLabel;
 	private JTextField balanceField;
-	private static double balance = 0.0;
-    private static final String BALANCE_FILE = "balance.txt";
+	public static double balance = 0.0;
+    public static final String BALANCE_FILE = "balance.txt";
+    private BalanceFileHandler balanceFileHandler;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 		// Kontostand aus Datei laden
-        loadBalanceFromFile();
+        BalanceFileHandler.loadBalanceFromFile();
         
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -51,34 +56,12 @@ public class Bank {
 		});
 	}
 
-    // Methode zum Laden des Kontostands aus Datei
-	private static void loadBalanceFromFile() {
-		try (BufferedReader reader = new BufferedReader(new FileReader(BALANCE_FILE))) {
-            String line = reader.readLine();
-            if (line != null) {
-                balance = Double.parseDouble(line);
-            }
-        } catch (FileNotFoundException e) {
-            System.out.println("Balance file not found, starting with balance 0.0");
-        } catch (IOException | NumberFormatException e) {
-            System.out.println("Error reading balance file, starting with balance 0.0");
-        }		
-	}
-	
-	// Methode zum Speichern des Kontostands in Datei
-    private static void saveBalanceToFile() {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(BALANCE_FILE))) {
-            writer.write(String.format("%.2f", balance));
-        } catch (IOException e) {
-            System.out.println("Error saving balance to file");
-        }
-    }
-
 	/**
 	 * Create the application.
 	 */
 	public Bank() {
 		initialize();
+		this.balanceFileHandler = new BalanceFileHandler();
 	}
 
 	/**
@@ -132,7 +115,7 @@ public class Bank {
                     balance += amount;
                     balanceLabel.setText(String.format("%.2f", balance));
                     balanceField.setText("");
-                    saveBalanceToFile();
+                    BalanceFileHandler.saveBalanceToFile();
 				} catch (NumberFormatException ex) {
 					JOptionPane.showMessageDialog(frame, "Please enter a valid amount", "Error", JOptionPane.ERROR_MESSAGE);				}
 			}

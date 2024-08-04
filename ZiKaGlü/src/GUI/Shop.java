@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import Logic.BalanceFileHandler;
 
 public class Shop   {
 
@@ -28,8 +29,10 @@ public class Shop   {
 	private int cigarettesQuantity = 0;
 	public double price=0;
 	public String menge;
-
+    private BalanceFileHandler balanceFileHandler;
+  
 	public static void main(String[] args) {
+        BalanceFileHandler.loadBalanceFromFile();
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -49,6 +52,8 @@ public class Shop   {
 	 */
 	public Shop() {
 		initialize();
+		this.balanceFileHandler = new BalanceFileHandler();
+
 	}
 
 	/**
@@ -140,7 +145,7 @@ public class Shop   {
 				beerQuantity++;
 				price=beerQuantity*3+(coffeeQuantity*2.5)+(8*cigarettesQuantity);
 				String stringZahl = Double.toString(price);
-				txtSum.setText("$"+stringZahl);
+				txtSum.setText(stringZahl);
 				menge= beerQuantity+"x Beer, "+coffeeQuantity+"x Coffee and "+cigarettesQuantity+"x Cigarettes";
 				txtShoppingCart.setText(menge);
 			}
@@ -155,7 +160,7 @@ public class Shop   {
 				cigarettesQuantity++;
 				price=beerQuantity*3+(coffeeQuantity*2.5)+(8*cigarettesQuantity);
 				String stringZahl = Double.toString(price);
-				txtSum.setText("$"+stringZahl);
+				txtSum.setText(stringZahl);
 				menge= beerQuantity+"x Beer, "+coffeeQuantity+"x Coffee and "+cigarettesQuantity+"x Cigarettes";
 				txtShoppingCart.setText(menge);
 			}
@@ -170,7 +175,7 @@ public class Shop   {
 				coffeeQuantity++;
 				price=beerQuantity*3+(coffeeQuantity*2.5)+(8*cigarettesQuantity);
 				String stringZahl = Double.toString(price);
-				txtSum.setText("$"+stringZahl);
+				txtSum.setText(stringZahl);
 				menge= beerQuantity+"x Beer, "+coffeeQuantity+"x Coffee and "+cigarettesQuantity+"x Cigarettes";
 				txtShoppingCart.setText(menge);
 			}
@@ -183,6 +188,11 @@ public class Shop   {
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(frmshop, "Deine Bestellung von "+menge+" für $"+price+" wird vorbereitet!");
+				double amountToPay = Double.parseDouble(txtSum.getText());
+				System.out.println(amountToPay);
+				Bank.balance -= amountToPay;
+				txtSum.setText(String.format("%.2f", amountToPay));
+				BalanceFileHandler.saveBalanceToFile();
 			}
 		});
 		btnNewButton_4.setBounds(853, 498, 117, 32);
@@ -214,7 +224,7 @@ public class Shop   {
 		
 		txtSum = new JTextField();
 		txtSum.setForeground(Color.WHITE);
-		txtSum.setText("0");
+		txtSum.setText("$ 00,00");
 		txtSum.setBounds(670, 498, 130, 32);
 		txtSum.setBackground(new Color (150, 150, 150, 128));
 		txtSum.setColumns(10);
