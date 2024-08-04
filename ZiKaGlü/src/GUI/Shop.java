@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -17,7 +19,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import Logic.BalanceFileHandler;
+import Logic.FileHandler;
 
 public class Shop   {
 
@@ -29,10 +31,10 @@ public class Shop   {
 	private int cigarettesQuantity = 0;
 	public double price=0;
 	public String menge;
-    private BalanceFileHandler balanceFileHandler;
+    private FileHandler balanceFileHandler;
   
 	public static void main(String[] args) {
-        BalanceFileHandler.loadBalanceFromFile();
+        FileHandler.loadBalanceFromFile();
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -52,7 +54,7 @@ public class Shop   {
 	 */
 	public Shop() {
 		initialize();
-		this.balanceFileHandler = new BalanceFileHandler();
+		this.balanceFileHandler = new FileHandler();
 
 	}
 
@@ -148,6 +150,7 @@ public class Shop   {
 				txtSum.setText(stringZahl);
 				menge= beerQuantity+"x Beer, "+coffeeQuantity+"x Coffee and "+cigarettesQuantity+"x Cigarettes";
 				txtShoppingCart.setText(menge);
+				
 			}
 		});
 		btnNewButton_1.setBounds(434, 369, 117, 32);
@@ -192,7 +195,11 @@ public class Shop   {
 				System.out.println(amountToPay);
 				Bank.balance -= amountToPay;
 				txtSum.setText(String.format("%.2f", amountToPay));
-				BalanceFileHandler.saveBalanceToFile();
+				FileHandler.saveBalanceToFile();
+				saveShoppingCart();
+				txtShoppingCart.setText("Shopping Cart");
+				txtSum.setText("$ 0");
+				
 			}
 		});
 		btnNewButton_4.setBounds(853, 498, 117, 32);
@@ -263,4 +270,11 @@ public class Shop   {
 	public void setVisible(boolean visible) {
         frmshop.setVisible(visible);
     }
+	private void saveShoppingCart() {
+	    String quantityDetails = "Beer: " + beerQuantity + " Coffee: " + coffeeQuantity + " Cigarettes: " + cigarettesQuantity;
+	    String totalPrice = "Total Price: $" + price;
+	    FileHandler.saveShoppingCart(totalPrice, quantityDetails);
+
+	}
+	    
 }

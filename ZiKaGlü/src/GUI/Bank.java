@@ -26,7 +26,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import Logic.BalanceFileHandler;
+import Logic.FileHandler;
 
 public class Bank {
 
@@ -35,14 +35,14 @@ public class Bank {
 	private JTextField balanceField;
 	public static double balance = 0.0;
     public static final String BALANCE_FILE = "balance.txt";
-    private BalanceFileHandler balanceFileHandler;
+    private FileHandler balanceFileHandler;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 		// Kontostand aus Datei laden
-        BalanceFileHandler.loadBalanceFromFile();
+        FileHandler.loadBalanceFromFile();
         
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -61,7 +61,7 @@ public class Bank {
 	 */
 	public Bank() {
 		initialize();
-		this.balanceFileHandler = new BalanceFileHandler();
+		this.balanceFileHandler = new FileHandler();
 	}
 
 	/**
@@ -109,13 +109,27 @@ public class Bank {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				try {
+					
 					//balanceLabel.setText(String.valueOf(Double.valueOf(balanceLabel.getText())+Double.valueOf(balanceField.getText())));
 					//balanceField.setText("");
+					 String amountText = balanceField.getText();
+
+					    // Überprüfen, ob mehr als zwei Nachkommastellen vorhanden sind
+					    if (amountText.contains(".") && amountText.split("\\.")[1].length() > 2) {
+					        JOptionPane.showMessageDialog(frame, "Please enter a valid amount with two decimal places.", "Error", JOptionPane.ERROR_MESSAGE);
+					        return;
+					    }
+					
 					double amount = Double.parseDouble(balanceField.getText());
+					 if (amount < 0) {
+	                        JOptionPane.showMessageDialog(frame, "Deposit amount cannot be negative.", "Error", JOptionPane.ERROR_MESSAGE);
+	                        return; 
+	                    }
+					 
                     balance += amount;
                     balanceLabel.setText(String.format("%.2f", balance));
                     balanceField.setText("");
-                    BalanceFileHandler.saveBalanceToFile();
+                    FileHandler.saveBalanceToFile();
 				} catch (NumberFormatException ex) {
 					JOptionPane.showMessageDialog(frame, "Please enter a valid amount", "Error", JOptionPane.ERROR_MESSAGE);				}
 			}
