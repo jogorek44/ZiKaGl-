@@ -34,24 +34,25 @@ public class Bank {
 	static Label balanceLabel;
 	private JTextField balanceField;
 	public static double balance = 0.0;
-    public static final String BALANCE_FILE = "balance.txt";
-    private BalanceFileHandler balanceFileHandler;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		// Kontostand aus Datei laden
-        BalanceFileHandler.loadBalanceFromFile();
         
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					Bank window = new Bank();
 					window.frame.setVisible(true);
+					
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				
+				// Kontostand aus Datei laden
+			        BalanceFileHandler.loadBalanceFromFile();
 			}
 		});
 	}
@@ -61,7 +62,6 @@ public class Bank {
 	 */
 	public Bank() {
 		initialize();
-		this.balanceFileHandler = new BalanceFileHandler();
 	}
 
 	/**
@@ -79,7 +79,11 @@ public class Bank {
 		
 		//Kontostandanzeige
 		balanceLabel = new Label("Balance");
-		balanceLabel.setForeground(Color.BLACK);
+		if(balance >= 0) {
+			balanceLabel.setForeground(Color.BLACK);
+		} else {
+			balanceLabel.setForeground(Color.RED);
+		}
 		balanceLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 40));
 		balanceLabel.setBackground(new Color (150, 150, 150, 128));
 		balanceLabel.setText(String.format("%.2f", balance));
@@ -109,13 +113,13 @@ public class Bank {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				try {
-					//balanceLabel.setText(String.valueOf(Double.valueOf(balanceLabel.getText())+Double.valueOf(balanceField.getText())));
-					//balanceField.setText("");
 					double amount = Double.parseDouble(balanceField.getText());
                     balance += amount;
                     balanceLabel.setText(String.format("%.2f", balance));
                     balanceField.setText("");
                     BalanceFileHandler.saveBalanceToFile();
+                    //hier das panel aktualisieren, damit die schrift vom balnaceLabel wieder schwarz wird, wenn es negativ war und man genügend deposited
+                    
 				} catch (NumberFormatException ex) {
 					JOptionPane.showMessageDialog(frame, "Please enter a valid amount", "Error", JOptionPane.ERROR_MESSAGE);				}
 			}

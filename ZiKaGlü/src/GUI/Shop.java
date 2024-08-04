@@ -193,6 +193,14 @@ public class Shop   {
 				Bank.balance -= amountToPay;
 				txtSum.setText(String.format("%.2f", amountToPay));
 				BalanceFileHandler.saveBalanceToFile();
+				
+				// Reset quantities and price
+	            beerQuantity = 0;
+	            coffeeQuantity = 0;
+	            cigarettesQuantity = 0;
+	            price = 0;
+	            txtShoppingCart.setText("Shopping Cart");
+	            txtSum.setText("$0.00");
 			}
 		});
 		btnNewButton_4.setBounds(853, 498, 117, 32);
