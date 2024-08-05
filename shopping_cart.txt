@@ -1,2 +1,2 @@
-Total Price: $Total Price: $22.5
-Quantity: Beer: 0 Coffee: 9 Cigarettes: 0
+Total Price: $Total Price: $25.0
+Quantity: Beer: 5 Coffee: 4 Cigarettes: 0

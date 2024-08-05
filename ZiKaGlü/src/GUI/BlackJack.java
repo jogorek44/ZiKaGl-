@@ -24,7 +24,7 @@ public class BlackJack {
 	private JTextField balance;
 	private JTextField amountToBet;
 	private JTextField winOrLoss;
-
+	private Menu menu;
 	/**
 	 * Launch the application.
 	 */
@@ -55,7 +55,8 @@ public class BlackJack {
 		frame = new JFrame("BLACKJACK");
 		frame.setBounds(100, 100, 1024, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+		menu = new Menu();
+		menu.setVisible(false);
 		JPanel panel = new JPanel();
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
@@ -66,9 +67,15 @@ public class BlackJack {
 		btnNewButton_8.setBackground(new Color (150, 150, 150, 128));
 		btnNewButton_8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Menu menu = new Menu();
 				menu.setVisible(true);
-				frame.dispose();
+				menu.btnNewButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						  frame.setVisible(true);
+			              frame.dispose();
+					 }
+				});
+				menu.setVisible(true);
+				frame.setVisible(false);
 				}
 		});
 		panel.add(btnNewButton_8);
@@ -210,8 +217,7 @@ public class BlackJack {
 	}
 
 	public void setVisible(boolean visible) {
-        frame.setVisible(visible);
-    }
-	
+		frame.setVisible(visible);
+	}
 
 }

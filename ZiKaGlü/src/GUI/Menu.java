@@ -18,7 +18,8 @@ import java.awt.event.ActionEvent;
 public class Menu {
 
 	private JFrame frame;
-
+	public TransparentButton btnNewButton_2;
+	public TransparentButton btnNewButton;
 	/**
 
 
@@ -72,7 +73,7 @@ public class Menu {
 		panel_1.add(btnNewButton_3);
 		
 		
-		TransparentButton btnNewButton = new TransparentButton("Start");
+		btnNewButton = new TransparentButton("Start");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				  BlackJack blackjack = new BlackJack();
@@ -86,7 +87,7 @@ public class Menu {
 		panel_1.add(btnNewButton);
 		
 		
-		TransparentButton btnNewButton_2 = new TransparentButton("Bank Account");
+		btnNewButton_2 = new TransparentButton("Bank Account");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				  Bank bank = new Bank();

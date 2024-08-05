@@ -221,6 +221,7 @@ public class Shop   {
 		
 		
 		txtShoppingCart = new JTextField();
+		txtShoppingCart.setEditable(false);
 		txtShoppingCart.setForeground(Color.WHITE);
 		txtShoppingCart.setText("Shopping Cart");
 		txtShoppingCart.setBounds(313, 497, 304, 32);
@@ -230,6 +231,7 @@ public class Shop   {
 		
 		
 		txtSum = new JTextField();
+		txtSum.setEditable(false);
 		txtSum.setForeground(Color.WHITE);
 		txtSum.setText("$ 00,00");
 		txtSum.setBounds(670, 498, 130, 32);
