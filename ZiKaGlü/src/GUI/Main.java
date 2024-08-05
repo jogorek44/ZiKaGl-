@@ -8,11 +8,6 @@ public class Main {
 	public static void main(String[] args) {
 		init();
 	}
-
-	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-	int screenWidth = screenSize.width;
-	int screenHeight = screenSize.height;
-
 	public static void init() {
 		Menu p1 = new Menu();
 		p1.setVisible(true);

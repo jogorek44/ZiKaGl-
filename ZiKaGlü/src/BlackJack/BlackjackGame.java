@@ -14,10 +14,13 @@ public class BlackjackGame {
 	// Starts game and displays the rules
 	public void initializeGame() throws InterruptedException{
 		BlackJack p1 = new BlackJack();
-		//BlackJack p2 = new BlackJack();
-		//BlackJack p3 = new BlackJack();
-		//BlackJack p4 = new BlackJack();
-		// Gets the amount of players and creates them
+		System.out.print("p1");
+		BlackJack p2 = new BlackJack();
+		System.out.print("p1");
+		BlackJack p3 = new BlackJack();
+		System.out.print("p1");
+		BlackJack p4 = new BlackJack();
+		System.out.print("p1");
 		/*do {
 			wait(10);
 		} while (users > 6 || users < 0);

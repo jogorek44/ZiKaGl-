@@ -19,7 +19,7 @@ import java.awt.event.ActionEvent;
 
 public class Menu {
 
-	private JFrame frame;
+	JFrame frame;
 	public TransparentButton btnNewButton_2;
 	public TransparentButton start;
 	private Shop shop;
@@ -30,18 +30,12 @@ public class Menu {
 	 * 
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Menu window = new Menu();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	/*
+	 * public static void main(String[] args) { EventQueue.invokeLater(new
+	 * Runnable() { public void run() { try { Menu window = new Menu();
+	 * window.frame.setVisible(true); } catch (Exception e) { e.printStackTrace(); }
+	 * } }); }
+	 */
 
 	/**
 	 * Create the application.
@@ -142,7 +136,7 @@ public class Menu {
 				});
 			}
 		});
-		
+
 		btnNewButton_2.setFont(new Font("Dialog", Font.PLAIN, 20));
 		btnNewButton_2.setForeground(Color.WHITE);
 		btnNewButton_2.setBounds(6, 6, 223, 43);
@@ -162,7 +156,7 @@ public class Menu {
 				});
 			}
 		});
-		
+
 		btnNewButton_1.setFont(new Font("Dialog", Font.PLAIN, 30));
 		btnNewButton_1.setForeground(Color.WHITE);
 		btnNewButton_1.setBounds(427, 268, 170, 82);
@@ -208,5 +202,13 @@ public class Menu {
 
 	public void setVisible(boolean visible) {
 		frame.setVisible(visible);
+	}
+
+	public int getWidth() {
+		return frame.getWidth();
+	}
+
+	public int getHeight() {
+		return frame.getHeight();
 	}
 }
