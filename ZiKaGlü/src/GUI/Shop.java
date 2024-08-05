@@ -23,16 +23,17 @@ import Logic.FileHandler;
 
 public class Shop   {
 
-	private JFrame frmshop;
+	public JFrame frmshop;
 	private JTextField txtShoppingCart;
 	private JTextField txtSum;
+	public TransparentButton menu_button; 
 	private int beerQuantity=0;
 	private int coffeeQuantity=0;
 	private int cigarettesQuantity = 0;
 	public double price=0;
 	public String menge;
     private FileHandler balanceFileHandler;
-  
+    public TransparentButton bj_button;
 	public static void main(String[] args) {
         FileHandler.loadBalanceFromFile();
 		EventQueue.invokeLater(new Runnable() {
@@ -75,17 +76,17 @@ public class Shop   {
 		panel.setLayout(null);
 		
 		
-		TransparentButton btnNewButton = new TransparentButton("Menu");
-		btnNewButton.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		btnNewButton.setBounds(6, 6, 137, 32);
-		btnNewButton.addActionListener(new ActionListener() {
+		menu_button = new TransparentButton("Menu");
+		menu_button.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		menu_button.setBounds(6, 6, 137, 32);
+		menu_button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Menu menu = new Menu();
 				menu.setVisible(true);
 				frmshop.dispose();
 				}
 		});
-		panel.add(btnNewButton);
+		panel.add(menu_button);
 		
 		
 		JLabel lblNewLabel = new JLabel("Beer");
@@ -206,18 +207,18 @@ public class Shop   {
 		panel.add(btnNewButton_4);
 		
 		
-		TransparentButton btnNewButton_5 = new TransparentButton("BlackJack");
-		btnNewButton_5.addActionListener(new ActionListener() {
+		bj_button = new TransparentButton("BlackJack");
+		bj_button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				  BlackJack blackjack = new BlackJack();
 	                blackjack.setVisible(true);
 	                frmshop.dispose();
 	            }
 		});
-		btnNewButton_5.setFont(new Font("Dialog", Font.PLAIN, 20));
-		btnNewButton_5.setForeground(Color.WHITE);
-		btnNewButton_5.setBounds(6, 50, 145, 32);
-		panel.add(btnNewButton_5);
+		bj_button.setFont(new Font("Dialog", Font.PLAIN, 20));
+		bj_button.setForeground(Color.WHITE);
+		bj_button.setBounds(6, 50, 145, 32);
+		panel.add(bj_button);
 		
 		
 		txtShoppingCart = new JTextField();
@@ -278,5 +279,4 @@ public class Shop   {
 	    FileHandler.saveShoppingCart(totalPrice, quantityDetails);
 
 	}
-	    
 }
