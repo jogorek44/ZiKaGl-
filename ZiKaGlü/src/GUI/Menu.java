@@ -13,14 +13,17 @@ import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 
 public class Menu {
 
 	private JFrame frame;
 	public TransparentButton btnNewButton_2;
-	public TransparentButton btnNewButton;
+	public TransparentButton start;
 	private Shop shop;
+	private BlackJack blackjack;
 
 	/**
 	 * 
@@ -56,19 +59,63 @@ public class Menu {
 		frame.setBounds(100, 100, 1024, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+		blackjack = new BlackJack();
+		blackjack.setVisible(false);
+
 		JPanel panel_1 = new JPanel();
 		frame.getContentPane().add(panel_1, BorderLayout.CENTER);
 		panel_1.setLayout(null);
 
-		TransparentButton btnNewButton_3 = new TransparentButton("Shop");
-		btnNewButton_3.addActionListener(new ActionListener() {
+		start = new TransparentButton("Start");
+		start.setFont(new Font("Dialog", Font.PLAIN, 30));
+		start.setForeground(Color.WHITE);
+		start.setBounds(453, 202, 117, 54);
+		panel_1.add(start);
+		start.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame.setVisible(false);// schließt das aktuelle Fenster
-				shop = new Shop();
-				shop.setVisible(true); // erstellt ein neues Fenster
-				shop.bj_button.addActionListener(new ActionListener() {
+				frame.setVisible(false);
+				blackjack.setVisible(true);
+				blackjack.menu_button.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						frame.setVisible(true);
+						blackjack.setVisible(false);
+					}
+				});
+				blackjack.shop_button.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						Shop shop = new Shop();
+						shop.setVisible(true);
+						blackjack.setVisible(false);
+						shop.bj_button.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent e) {
+								shop.frmshop.dispose();
+								blackjack.setVisible(true);
+							}
+						});
+						shop.menu_button.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent e) {
+								shop.frmshop.dispose();
+								frame.setVisible(true);
+							}
+						});
+					}
+				});
+			}
+		});
+
+		TransparentButton shop_button = new TransparentButton("Shop");
+		shop_button.setFont(new Font("Dialog", Font.PLAIN, 30));
+		shop_button.setForeground(Color.WHITE);
+		shop_button.setBounds(453, 362, 117, 54);
+		panel_1.add(shop_button);
+		shop_button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.setVisible(false);
+				shop = new Shop();
+				shop.setVisible(true);
+				shop.bj_button.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						blackjack.setVisible(true);
 						shop.frmshop.dispose();
 					}
 				});
@@ -80,32 +127,22 @@ public class Menu {
 				});
 			}
 		});
-		btnNewButton_3.setFont(new Font("Dialog", Font.PLAIN, 30));
-		btnNewButton_3.setForeground(Color.WHITE);
-		btnNewButton_3.setBounds(453, 362, 117, 54);
-		panel_1.add(btnNewButton_3);
-
-		btnNewButton = new TransparentButton("Start");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				BlackJack blackjack = new BlackJack();
-				blackjack.setVisible(true);
-				frame.dispose();
-			}
-		});
-		btnNewButton.setFont(new Font("Dialog", Font.PLAIN, 30));
-		btnNewButton.setForeground(Color.WHITE);
-		btnNewButton.setBounds(453, 202, 117, 54);
-		panel_1.add(btnNewButton);
 
 		btnNewButton_2 = new TransparentButton("Bank Account");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frame.setVisible(false);
 				Bank bank = new Bank();
 				bank.setVisible(true);
-				frame.dispose();
+				bank.menu_button.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						frame.setVisible(true);
+						bank.frame.dispose();
+					}
+				});
 			}
 		});
+		
 		btnNewButton_2.setFont(new Font("Dialog", Font.PLAIN, 20));
 		btnNewButton_2.setForeground(Color.WHITE);
 		btnNewButton_2.setBounds(6, 6, 223, 43);
@@ -116,9 +153,16 @@ public class Menu {
 			public void actionPerformed(ActionEvent e) {
 				Settings settings = new Settings();
 				settings.setVisible(true);
-				frame.dispose();
+				frame.setVisible(false);
+				settings.menu_button.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						frame.setVisible(true);
+						settings.frame.dispose();
+					}
+				});
 			}
 		});
+		
 		btnNewButton_1.setFont(new Font("Dialog", Font.PLAIN, 30));
 		btnNewButton_1.setForeground(Color.WHITE);
 		btnNewButton_1.setBounds(427, 268, 170, 82);

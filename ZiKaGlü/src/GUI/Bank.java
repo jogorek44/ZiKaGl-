@@ -30,13 +30,13 @@ import Logic.FileHandler;
 
 public class Bank {
 
-	private JFrame frame;
+	public JFrame frame;
 	static Label balanceLabel;
 	private JTextField balanceField;
 	public static double balance = 0.0;
     public static final String BALANCE_FILE = "balance.txt";
     private FileHandler balanceFileHandler;
-
+    public TransparentButton menu_button;
 	/**
 	 * Launch the application.
 	 */
@@ -138,16 +138,9 @@ public class Bank {
 		panel.add(btnNewButton);
 		
 		
-		TransparentButton btnNewButton_8 = new TransparentButton("Menu");
-		btnNewButton_8.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Menu menu = new Menu();
-				menu.setVisible(true);
-				frame.dispose();
-				}
-		});
-		btnNewButton_8.setBounds(6, 6, 117, 29);
-		panel.add(btnNewButton_8);
+		menu_button = new TransparentButton("Menu");
+		menu_button.setBounds(6, 6, 117, 29);
+		panel.add(menu_button);
 		
 		
 		JLabel lblNewLabel_1 = new JLabel("");
