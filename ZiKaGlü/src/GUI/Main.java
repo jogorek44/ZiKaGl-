@@ -9,19 +9,19 @@ public class Main {
 		init();
 	}
 	public static void init() {
-		Menu p1 = new Menu();
+		Menu p1 = new Menu(1);
 		p1.setVisible(true);
 		System.out.print("p1 ");
 		setPos(p1, 1);
-		Menu p2 = new Menu();
+		Menu p2 = new Menu(2);
 		p2.setVisible(true);
 		System.out.print("p2 ");
 		setPos(p2, 2);
-		Menu p3 = new Menu();
+		Menu p3 = new Menu(3);
 		p3.setVisible(true);
 		System.out.print("p3 ");
 		setPos(p3, 3);
-		Menu p4 = new Menu();
+		Menu p4 = new Menu(4);
 		p4.setVisible(true);
 		System.out.print("p4 ");
 		setPos(p4, 4);

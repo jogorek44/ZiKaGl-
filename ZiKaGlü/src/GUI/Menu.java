@@ -40,7 +40,8 @@ public class Menu {
 	/**
 	 * Create the application.
 	 */
-	public Menu() {
+	public Menu(int id) {
+		setId(id);
 		initialize();
 	}
 
