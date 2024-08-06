@@ -12,22 +12,18 @@ public class Main {
 		Menu p1 = new Menu(1);
 		p1.setVisible(true);
 		System.out.print("p1 ");
-		setPos(p1, 1);
 		Menu p2 = new Menu(2);
 		p2.setVisible(true);
 		System.out.print("p2 ");
-		setPos(p2, 2);
 		Menu p3 = new Menu(3);
 		p3.setVisible(true);
 		System.out.print("p3 ");
-		setPos(p3, 3);
 		Menu p4 = new Menu(4);
 		p4.setVisible(true);
 		System.out.print("p4 ");
-		setPos(p4, 4);
 	}
 
-	public static void setPos(Menu temp, int pos) {
+	/*public static void setPos(Menu temp, int pos) {
 		switch (pos) {
 		case 1:
 			temp.frame.setLocation(0, 0);
@@ -38,5 +34,5 @@ public class Main {
 		case 4:
 			temp.frame.setLocation(1620, 880);
 		}
-	}
+	}*/
 }
