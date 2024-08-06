@@ -24,7 +24,7 @@ public class Menu {
 	public TransparentButton start;
 	private Shop shop;
 	private BlackJack blackjack;
-
+	private int id;
 	/**
 	 * 
 	 * 
@@ -210,5 +210,13 @@ public class Menu {
 
 	public int getHeight() {
 		return frame.getHeight();
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 }
