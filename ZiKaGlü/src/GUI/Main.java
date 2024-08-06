@@ -4,21 +4,26 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 
 public class Main {
-
+	
+	static Menu p1;
+	static Menu p2;
+	static Menu p3;
+	static Menu p4;
+	
 	public static void main(String[] args) {
 		init();
 	}
 	public static void init() {
-		Menu p1 = new Menu(1);
+		p1 = new Menu(1);
 		p1.setVisible(true);
 		System.out.print("p1 ");
-		Menu p2 = new Menu(2);
+		p2 = new Menu(2);
 		p2.setVisible(true);
 		System.out.print("p2 ");
-		Menu p3 = new Menu(3);
+		p3 = new Menu(3);
 		p3.setVisible(true);
 		System.out.print("p3 ");
-		Menu p4 = new Menu(4);
+		p4 = new Menu(4);
 		p4.setVisible(true);
 		System.out.print("p4 ");
 	}
