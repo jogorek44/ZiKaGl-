@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Player implements Serializable
 {
 	private int bank;
-	private double bet;
+	private int bet;
 	private String name;
 	private Hand hand;
 	
@@ -61,7 +61,7 @@ public class Player implements Serializable
 	}
 	
 	// Sets a player's bet
-	public void setBet(double newBet) {
+	public void setBet(int newBet) {
 		bet = newBet;
 	}
 	
@@ -81,7 +81,7 @@ public class Player implements Serializable
 	}
 	
 	// Gets a player's bet
-	public double getBet(){
+	public int getBet(){
 		return this.bet;
 	}
 		

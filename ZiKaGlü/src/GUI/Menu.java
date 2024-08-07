@@ -29,6 +29,7 @@ public class Menu {
 	private BlackJack blackjack;
 	private int id;
 	private Player player;
+
 	/**
 	 * 
 	 * 
@@ -44,6 +45,7 @@ public class Menu {
 	/**
 	 * Create the application.
 	 */
+
 	public Menu(int id) {
 		setId(id);
 		initialize();
@@ -53,6 +55,7 @@ public class Menu {
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	
 	private void initialize() {
 		frame = new JFrame("MENU");
 		frame.setResizable(false);

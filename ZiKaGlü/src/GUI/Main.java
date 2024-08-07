@@ -1,13 +1,5 @@
 package GUI;
 
-import java.awt.Dimension;
-import java.awt.EventQueue;
-import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.Timer;
-
 import BlackJack.*;
 
 public class Main {
@@ -25,33 +17,33 @@ public class Main {
 
 	public static void main(String[] args) {
 		init();
-		getBets(15);
-		System.out.print("Wetten eingesammelt");
+		startGame();
 	}
 
 	public static void init() {
 		p1 = new Menu(1);
 		p1.setVisible(true);
-		System.out.print("p1 ");
+		p1.getBlackjack().betTime();
 
 		p2 = new Menu(2);
 		p2.setVisible(true);
-		System.out.print("p2 ");
+		p2.getBlackjack().betTime();
 
 		p3 = new Menu(3);
 		p3.setVisible(true);
-		System.out.print("p3 ");
+		p3.getBlackjack().betTime();
 
 		p4 = new Menu(4);
 		p4.setVisible(true);
-		System.out.print("p4 ");
-		
-		deck = new Deck();
+		p4.getBlackjack().betTime();
 		menus = new Menu[4];
 		menus[0] = p1;
 		menus[1] = p2;
 		menus[2] = p3;
 		menus[3] = p4;
+		
+		deck = new Deck();
+		
 	}
 
 	public void shuffle() throws InvalidDeckPositionException, InvalidCardSuitException, InvalidCardValueException {
@@ -59,20 +51,23 @@ public class Main {
 	}
 
 	public static void getBets(int count) {
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < 4; i++) 
 			menus[i].getBlackjack().startTimer(count);
+		try {
+			Thread.sleep(16000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
-		while (!menus[0].getBlackjack().isTimerFinished())
-			;
-		if (menus[0].getBlackjack().isTimerFinished()) {
 			for (int i = 0; i < 4; i++) {
-				menus[i].getPlayer().setBet(Double.valueOf(menus[i].getBlackjack().getAmountToBet()));
-			}
+				System.out.println(menus[i].getBlackjack().getAmountToBet());
+				if(!menus[i].getBlackjack().getAmountToBet().isEnabled()){
+					menus[i].getPlayer().setBet(Integer.parseInt(menus[i].getBlackjack().getAmountToBet().getText()));
+					menus[i].getBlackjack();
+				}				
 		}
 	}
 
 	public static void startGame() {
-		System.out.print("Schleife beendet");
 		getBets(15);
 		System.out.print("Wetten eingesammelt");
 	}

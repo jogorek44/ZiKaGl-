@@ -1,23 +1,19 @@
 package GUI;
 
-import java.awt.EventQueue;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.Timer;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import java.awt.BorderLayout;
-import java.awt.Color;
-
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
-import javax.swing.JTextField;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import java.awt.Font;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import javax.swing.Timer;
 
 public class BlackJack {
 
@@ -31,11 +27,18 @@ public class BlackJack {
 	TransparentButton menu_button;
 	private JLabel timer;
 	private boolean isTimerFinished;
-
+	private TransparentButton bet;
+	private TransparentButton hit;
+	private TransparentButton stand;
+	private TransparentButton doub;
+	private TransparentButton split;
+	private TransparentButton allIn;
+	private boolean betState = false;
+	
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -47,7 +50,7 @@ public class BlackJack {
 			}
 		});
 	}
-
+	*/
 	/**
 	 * Create the application.
 	 */
@@ -70,6 +73,7 @@ public class BlackJack {
 		timer.setVisible(false);
 		timer.setHorizontalAlignment(SwingConstants.CENTER);
 		timer.setFont(new Font("Tahoma", Font.BOLD, 80));
+		timer.setForeground(Color.WHITE);
 		timer.setBounds(434, 216, 117, 70);
 		panel.add(timer);
 
@@ -79,17 +83,27 @@ public class BlackJack {
 		menu_button.setBackground(new Color(150, 150, 150, 128));
 		panel.add(menu_button);
 
-		TransparentButton hit = new TransparentButton("Hit");
+		hit = new TransparentButton("Hit");
 		hit.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
 		hit.setBounds(329, 370, 130, 70);
 		panel.add(hit);
 
-		TransparentButton bet = new TransparentButton("Bet");
+		bet = new TransparentButton("Bet");
 		bet.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		bet.setBounds(184, 477, 117, 32);
 		panel.add(bet);
+		bet.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(Integer.parseInt(amountToBet.getText())<=Integer.parseInt(balance.getText())){
+					amountToBet.setEnabled(false);
+					bet.setEnabled(false);
+					allIn.setEnabled(false);
+					balance.setText(String.valueOf(Integer.parseInt(balance.getText())-Integer.parseInt(amountToBet.getText()))); 
+				}
+			}
+		});
 
-		TransparentButton split = new TransparentButton("Split");
+		split = new TransparentButton("Split");
 		split.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
 		split.setBounds(619, 370, 130, 70);
 		panel.add(split);
@@ -133,24 +147,24 @@ public class BlackJack {
 		lblNewLabel_1.setBounds(660, 32, 165, 49);
 		panel.add(lblNewLabel_1);
 
-		balance = new JTextField();
+		balance = new JTextField("100");
 		balance.setForeground(Color.WHITE);
-		balance.setText("<Zahl>");
 		balance.setEditable(false);
 		balance.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		balance.setBounds(860, 43, 130, 32);
 		balance.setBackground(new Color(150, 150, 150, 128));
 		balance.setColumns(10);
+		balance.setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.LIGHT_GRAY));
 		panel.add(balance);
 
-		JLabel lblNewLabel_2 = new JLabel("Balance");
-		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_2.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
-		lblNewLabel_2.setForeground(Color.WHITE);
-		lblNewLabel_2.setBounds(845, 7, 130, 38);
-		panel.add(lblNewLabel_2);
+		JLabel balanceTag = new JLabel("Balance");
+		balanceTag.setHorizontalAlignment(SwingConstants.CENTER);
+		balanceTag.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
+		balanceTag.setForeground(Color.WHITE);
+		balanceTag.setBounds(845, 7, 130, 38);
+		panel.add(balanceTag);
 
-		amountToBet = new JTextField();
+		amountToBet = new JTextField("");
 		amountToBet.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		amountToBet.setForeground(Color.WHITE);
 		amountToBet.setBounds(313, 476, 130, 32);
@@ -158,26 +172,33 @@ public class BlackJack {
 		amountToBet.setColumns(10);
 		panel.add(amountToBet);
 
-		TransparentButton btnNewButton_4 = new TransparentButton("All In");
-		btnNewButton_4.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		btnNewButton_4.setBounds(184, 521, 117, 32);
-		panel.add(btnNewButton_4);
+		allIn = new TransparentButton("All In");
+		allIn.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		allIn.setBounds(184, 521, 117, 32);
+		allIn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(balance.getText()!= "")
+					amountToBet.setText(balance.getText());
+			}
+		});
+		panel.add(allIn);
 
-		TransparentButton stand = new TransparentButton("Stand");
+		stand = new TransparentButton("Stand");
 		stand.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
 		stand.setBounds(184, 370, 130, 70);
 		panel.add(stand);
 
-		TransparentButton doub = new TransparentButton("Double");
+		doub = new TransparentButton("Double");
 		doub.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
 		doub.setBounds(474, 370, 130, 70);
 		panel.add(doub);
 
-		winOrLoss = new JTextField("Loss!");
+		winOrLoss = new JTextField("");
 		winOrLoss.setFont(new Font("Lucida Grande", Font.PLAIN, 70));
 		winOrLoss.setHorizontalAlignment(SwingConstants.CENTER);
 		winOrLoss.setEditable(false);
 		winOrLoss.setForeground(Color.BLACK);
+		winOrLoss.setVisible(false);
 		// winOrLoss.setOpaque(false); Später Kommentar entfernen Damit Feld nicht
 		// sichtbar ist
 		// winOrLoss.setBorder(null);
@@ -206,7 +227,6 @@ public class BlackJack {
 			public void actionPerformed(ActionEvent e) {
 				if (count > 0) {
 					timer.setText(String.valueOf(count));
-					System.out.print(count);
 					count--;
 				} else {
 					((Timer) e.getSource()).stop();
@@ -215,7 +235,6 @@ public class BlackJack {
 				}
 			}
 		});
-
 		countdownTimer.start();
 	}
 	/*
@@ -243,12 +262,34 @@ public class BlackJack {
 		this.balance = balance;
 	}
 
-	public String getAmountToBet() {
-		return amountToBet.getText();
+	public JTextField getAmountToBet() {
+		return amountToBet;
 	}
 
 	public void String(String amountToBet) {
 		this.amountToBet.setText(amountToBet);
 	}
 
+	public void roundstart(){
+		bet.setEnabled(false);
+		allIn.setEnabled(false);
+		hit.setEnabled(true);
+		stand.setEnabled(true);
+		split.setEnabled(true);
+		doub.setEnabled(true);
+	}
+
+	public void afk(){
+		bet.setEnabled(false);
+	}
+
+	public void betTime(){
+		amountToBet.setEnabled(true);
+		bet.setEnabled(true);
+		allIn.setEnabled(true);
+		hit.setEnabled(false);
+		stand.setEnabled(false);
+		split.setEnabled(false);
+		doub.setEnabled(false);
+	}
 }
