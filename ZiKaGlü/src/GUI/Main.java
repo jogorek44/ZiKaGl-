@@ -1,6 +1,8 @@
 package GUI;
 
-import BlackJack.*;
+import bj.*;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class Main {
 
@@ -9,11 +11,7 @@ public class Main {
 	static Menu p2;
 	static Menu p3;
 	static Menu p4;
-	private static Deck deck;
-	private static Dealer dealer = new Dealer();
-	private static boolean active = false;
-	private static boolean activePlayers;
-	private static boolean change = false;
+	private static boolean[] activePlayers;
 
 	public static void main(String[] args) {
 		init();
@@ -41,37 +39,52 @@ public class Main {
 		menus[1] = p2;
 		menus[2] = p3;
 		menus[3] = p4;
-		
-		deck = new Deck();
-		
 	}
 
-	public void shuffle() throws InvalidDeckPositionException, InvalidCardSuitException, InvalidCardValueException {
-		deck.shuffle();
-	}
 
 	public static void getBets(int count) {
 		for (int i = 0; i < 4; i++) {
 			menus[i].getBlackjack().betTime();
 			menus[i].getBlackjack().startTimer(count);
 		}
+		sleepymeepy(count);
+		for (int i = 0; i < 4; i++) {
+			//System.out.println(menus[i].getBlackjack().getAmountToBet());
+			if(!menus[i].getBlackjack().getAmountToBet().isEnabled()){
+				menus[i].setBet(Integer.parseInt(menus[i].getBlackjack().getAmountToBet().getText()));
+				menus[i].getBlackjack().roundstart();
+			}		
+			else menus[i].getBlackjack().afk();
+		}
+		for(int i = 0; i <4; i++){
+			System.out.println("player " + menus[i].getPlayer().getId() + " ist " + menus[i].getBlackjack().isAfk());
+		}
+	}
+
+	
+	public static void sleepymeepy(int a){
 		try {
-			Thread.sleep(16000);
+			Thread.sleep(a*1000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-		}
-			for (int i = 0; i < 4; i++) {
-				System.out.println(menus[i].getBlackjack().getAmountToBet());
-				if(!menus[i].getBlackjack().getAmountToBet().isEnabled()){
-					menus[i].getPlayer().setBet(Integer.parseInt(menus[i].getBlackjack().getAmountToBet().getText()));
-					menus[i].getBlackjack().roundstart();
-				}		
-				else menus[i].getBlackjack().afk();
 		}
 	}
 
 	public static void startGame() {
-		getBets(15);
-		System.out.print("Wetten eingesammelt");
+		getBets(10);
+		var p = Arrays.stream(menus).filter(m->!m.getBlackjack().isAfk()).map(Menu::getPlayer).toArray(Player[]::new);
+		var g = new BlackjackGame(p, 10);
+		for(var pl : p){
+			g.bet(pl.getId(), menus[pl.getId()-1].getBet());
+		}
+		g.startSplitting();
+		for(var pl : p){
+			menus[pl.getId()-1].getBlackjack().yourCards.setText(cardsString(g.getCards(pl.getId(), 0)));
+			menus[pl.getId()-1].getBlackjack().dealersCards.setText(cardsString(g.getDealerCards()));
+			System.out.println(Arrays.toString(g.getCards(pl.getId(), 0)));
+		}
+	}
+	private static String cardsString(Card[] c){
+		return Arrays.stream(c).map(Object::toString).collect(Collectors.joining("\n"));
 	}
 }

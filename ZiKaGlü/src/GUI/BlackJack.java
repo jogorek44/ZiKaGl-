@@ -19,8 +19,8 @@ import javax.swing.Timer;
 public class BlackJack {
 
 	JFrame frame;
-	private JTextField dealersCards;
-	private JTextField yourCards;
+	JTextField dealersCards;
+	JTextField yourCards;
 	private JTextField balance;
 	private JTextField amountToBet;
 	private JTextField winOrLoss;
@@ -294,7 +294,11 @@ public class BlackJack {
 		this.amountToBet.setText(amountToBet);
 	}
 
+	public boolean isAfk(){
+		return this.afk;
+	}
 	public void roundstart(){
+		afk = false;
 		bet.setEnabled(false);
 		allIn.setEnabled(false);
 		hit.setEnabled(true);

@@ -12,7 +12,7 @@ import javax.swing.ImageIcon;
 
 import javax.swing.SwingConstants;
 
-import BlackJack.Player;
+import bj.Player;
 
 import java.awt.Color;
 import java.awt.event.ActionListener;
@@ -27,8 +27,8 @@ public class Menu {
 	public TransparentButton start;
 	private Shop shop;
 	private BlackJack blackjack;
-	private int id;
 	private Player player;
+	private int bet;
 
 	/**
 	 * 
@@ -42,14 +42,21 @@ public class Menu {
 	 * } }); }
 	 */
 
+	public int getBet() {
+		return bet;
+	}
+
+	public void setBet(int bet) {
+		this.bet = bet;
+	}
+
 	/**
 	 * Create the application.
 	 */
 
 	public Menu(int id) {
-		setId(id);
 		initialize();
-		setPlayer(new Player());
+		setPlayer(new Player(id, 100));
 	}
 
 	/**
@@ -219,14 +226,6 @@ public class Menu {
 
 	public int getHeight() {
 		return frame.getHeight();
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public Player getPlayer() {
