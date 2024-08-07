@@ -25,7 +25,6 @@ public class Menu {
 	JFrame frame;
 	public TransparentButton btnNewButton_2;
 	public TransparentButton start;
-	private Shop shop;
 	private BlackJack blackjack;
 	private Player player;
 	private int bet;
@@ -121,7 +120,7 @@ public class Menu {
 		shop_button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.setVisible(false);
-				shop = new Shop();
+				Shop shop = new Shop();
 				shop.setVisible(true);
 				shop.bj_button.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
@@ -234,14 +233,6 @@ public class Menu {
 
 	public void setPlayer(Player player) {
 		this.player = player;
-	}
-
-	public Shop getShop() {
-		return shop;
-	}
-
-	public void setShop(Shop shop) {
-		this.shop = shop;
 	}
 
 	public BlackJack getBlackjack() {

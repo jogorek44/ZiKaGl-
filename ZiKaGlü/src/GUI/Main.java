@@ -25,12 +25,6 @@ public class Main {
 		p1 = new Menu(1);
 		p1.setVisible(true);
 		p1.getBlackjack().betTime();
-		p1.shop.checkout.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				a.getArr_bal()[0].setText(p1.getShop().getSum());
-				a.getArr_text()[0].setText(String.valueOf(p1.getShop().getProducts()));
-			}
-		});
 		
 		p2 = new Menu(2);
 		p2.setVisible(true);
@@ -48,8 +42,6 @@ public class Main {
 		menus[1] = p2;
 		menus[2] = p3;
 		menus[3] = p4;
-		
-		a = new AdminView();
 	}
 
 
@@ -65,9 +57,6 @@ public class Main {
 				menus[i].setBet(Integer.parseInt(menus[i].getBlackjack().getAmountToBet().getText()));
 			}		
 			else menus[i].getBlackjack().afk();
-		}
-		for(int i = 0; i <4; i++){
-			System.out.println("player " + menus[i].getPlayer().getId() + " ist " + menus[i].getBlackjack().isAfk());
 		}
 	}
 
@@ -92,8 +81,6 @@ public class Main {
 			g.setDoneSplitting(pl.getId());
 		g.startHitting();
 		for(var pl : p){
-			
-			System.out.println(Arrays.toString(g.getCards(pl.getId(), 0)));
 			menus[pl.getId()-1].getBlackjack().roundstart(g, pl);
 		}
 		while(!g.isEveryoneDoneHitting());
