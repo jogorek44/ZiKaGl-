@@ -26,6 +26,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+
+import Logic.BalanceFileHandler;
 import Logic.FileHandler;
 
 public class Bank {
@@ -34,22 +36,15 @@ public class Bank {
 	static Label balanceLabel;
 	private JTextField balanceField;
 	public static double balance = 0.0;
-<<<<<<< HEAD
 
-=======
     public static final String BALANCE_FILE = "balance.txt";
     private FileHandler balanceFileHandler;
     public TransparentButton menu_button;
->>>>>>> 9e7e18a98fd803d1a66e1369d5ee81d52ab1d091
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-<<<<<<< HEAD
-=======
 		// Kontostand aus Datei laden
-        FileHandler.loadBalanceFromFile();
->>>>>>> 9e7e18a98fd803d1a66e1369d5ee81d52ab1d091
         
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -73,10 +68,7 @@ public class Bank {
 	 */
 	public Bank() {
 		initialize();
-<<<<<<< HEAD
-=======
 		this.balanceFileHandler = new FileHandler();
->>>>>>> 9e7e18a98fd803d1a66e1369d5ee81d52ab1d091
 	}
 
 	/**
@@ -128,8 +120,6 @@ public class Bank {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				try {
-<<<<<<< HEAD
-=======
 					
 					//balanceLabel.setText(String.valueOf(Double.valueOf(balanceLabel.getText())+Double.valueOf(balanceField.getText())));
 					//balanceField.setText("");
@@ -140,8 +130,6 @@ public class Bank {
 					        JOptionPane.showMessageDialog(frame, "Please enter a valid amount with two decimal places.", "Error", JOptionPane.ERROR_MESSAGE);
 					        return;
 					    }
-					
->>>>>>> 9e7e18a98fd803d1a66e1369d5ee81d52ab1d091
 					double amount = Double.parseDouble(balanceField.getText());
 					 if (amount < 0) {
 	                        JOptionPane.showMessageDialog(frame, "Deposit amount cannot be negative.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -151,13 +139,10 @@ public class Bank {
                     balance += amount;
                     balanceLabel.setText(String.format("%.2f", balance));
                     balanceField.setText("");
-<<<<<<< HEAD
                     BalanceFileHandler.saveBalanceToFile();
                     //hier das panel aktualisieren, damit die schrift vom balnaceLabel wieder schwarz wird, wenn es negativ war und man genügend deposited
                     
-=======
                     FileHandler.saveBalanceToFile();
->>>>>>> 9e7e18a98fd803d1a66e1369d5ee81d52ab1d091
 				} catch (NumberFormatException ex) {
 					JOptionPane.showMessageDialog(frame, "Please enter a valid amount", "Error", JOptionPane.ERROR_MESSAGE);				}
 			}

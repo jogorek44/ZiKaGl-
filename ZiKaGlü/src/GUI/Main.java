@@ -1,7 +1,12 @@
 package GUI;
 
 import java.awt.Dimension;
+import java.awt.EventQueue;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.Timer;
 
 import BlackJack.*;
 
@@ -14,25 +19,33 @@ public class Main {
 	static Menu p4;
 	private static Deck deck;
 	private static Dealer dealer = new Dealer();
+	private static boolean active = false;
+	private static boolean activePlayers;
+	private static boolean change = false;
 
 	public static void main(String[] args) {
 		init();
 		getBets(15);
+		System.out.print("Wetten eingesammelt");
 	}
 
 	public static void init() {
 		p1 = new Menu(1);
 		p1.setVisible(true);
 		System.out.print("p1 ");
+
 		p2 = new Menu(2);
 		p2.setVisible(true);
 		System.out.print("p2 ");
+
 		p3 = new Menu(3);
 		p3.setVisible(true);
 		System.out.print("p3 ");
+
 		p4 = new Menu(4);
 		p4.setVisible(true);
 		System.out.print("p4 ");
+		
 		deck = new Deck();
 		menus = new Menu[4];
 		menus[0] = p1;
@@ -49,19 +62,18 @@ public class Main {
 		for (int i = 0; i < 4; i++) {
 			menus[i].getBlackjack().startTimer(count);
 		}
-		while (!menus[3].getBlackjack().isTimerFinished())
+		while (!menus[0].getBlackjack().isTimerFinished())
 			;
-		if (menus[3].getBlackjack().isTimerFinished()) {
+		if (menus[0].getBlackjack().isTimerFinished()) {
 			for (int i = 0; i < 4; i++) {
 				menus[i].getPlayer().setBet(Double.valueOf(menus[i].getBlackjack().getAmountToBet()));
 			}
 		}
 	}
 
-	/*
-	 * public static void setPos(Menu temp, int pos) { switch (pos) { case 1:
-	 * temp.frame.setLocation(0, 0); case 2: temp.frame.setLocation(1620, 0); case
-	 * 3: temp.frame.setLocation(0, 880); case 4: temp.frame.setLocation(1620, 880);
-	 * } }
-	 */
+	public static void startGame() {
+		System.out.print("Schleife beendet");
+		getBets(15);
+		System.out.print("Wetten eingesammelt");
+	}
 }

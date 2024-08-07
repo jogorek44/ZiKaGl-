@@ -19,6 +19,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import Logic.BalanceFileHandler;
 import Logic.FileHandler;
 
 public class Shop {
@@ -183,7 +184,6 @@ public class Shop {
 				System.out.println(amountToPay);
 				Bank.balance -= amountToPay;
 				txtSum.setText(String.format("%.2f", amountToPay));
-<<<<<<< HEAD
 				BalanceFileHandler.saveBalanceToFile();
 				
 				// Reset quantities and price
@@ -193,13 +193,10 @@ public class Shop {
 	            price = 0;
 	            txtShoppingCart.setText("Shopping Cart");
 	            txtSum.setText("$0.00");
-=======
 				FileHandler.saveBalanceToFile();
 				saveShoppingCart();
 				txtShoppingCart.setText("Shopping Cart");
 				txtSum.setText("$ 0");
-
->>>>>>> 9e7e18a98fd803d1a66e1369d5ee81d52ab1d091
 			}
 		});
 		btnNewButton_4.setBounds(853, 498, 117, 32);

@@ -200,13 +200,14 @@ public class BlackJack {
 		setTimerFinished(false);
 		timer.setVisible(true);
 		Timer countdownTimer = new Timer(1000, new ActionListener() {
-			int countdown = time;
+			int count = time;
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (countdown > 0) {
-					timer.setText(String.valueOf(countdown));
-					countdown--;
+				if (count > 0) {
+					timer.setText(String.valueOf(count));
+					System.out.print(count);
+					count--;
 				} else {
 					((Timer) e.getSource()).stop();
 					timer.setVisible(false);
