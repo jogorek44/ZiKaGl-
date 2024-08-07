@@ -12,8 +12,8 @@ import java.awt.event.ActionEvent;
 
 public class Settings {
 
-	private JFrame frame;
-
+	JFrame frame;
+	TransparentButton menu_button;
 	/**
 	 * Launch the application.
 	 */
@@ -44,40 +44,32 @@ public class Settings {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 1024, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		
+
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.LIGHT_GRAY);
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
+
+		menu_button = new TransparentButton("Menu");
 		
-		
-		TransparentButton btnNewButton_5= new TransparentButton("Menu");
-		btnNewButton_5.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Menu menu = new Menu();
-				menu.setVisible(true);
-				frame.dispose();
-				}
-		});
-		btnNewButton_5.setBounds(6, 6, 117, 29);
-		panel.add(btnNewButton_5);
-		
-		
+		menu_button.setBounds(6, 6, 117, 29);
+		panel.add(menu_button);
+
 		TransparentButton btnNewButton_1 = new TransparentButton("Accessebility Mode");
 		btnNewButton_1.setBounds(418, 39, 187, 29);
 		panel.add(btnNewButton_1);
-		
-		
+
 		JTextPane txtpnHierStehtDie = new JTextPane();
 		txtpnHierStehtDie.setEditable(false);
-		txtpnHierStehtDie.setBackground(new Color (150, 150, 150, 128));
-		txtpnHierStehtDie.setText("Blackjack Rules\n\nObjective:\nAchieve a hand value closer to 21 than the dealer without exceeding 21.\n\nGameplay:\n\n\t1.\tBet:\n\t\t• Place a wager before the cards are dealt.\n\t2.\tDealing:\n\t\t• Each player and the dealer receive two cards. One of the dealer’s cards is face down.\n\t3.\tPlayer Options:\n\t\t• Draw a Card: Take additional cards to increase the value of your hand.\n\t\t• Stand: End your turn and keep your current hand.\n\t\t• Double: Double your bet and receive one additional card.\n\t  \t• Split: If you have two cards of the same value, split them into two separate hands and \t\t                     play each hand individually.\n\t\t• All In: Wager all your chips on one hand.\n\t4.\tDealer’s Play:\n\t\t• The dealer reveals their face-down card and draws until they reach at least 17 points.");
+		txtpnHierStehtDie.setBackground(new Color(150, 150, 150, 128));
+		txtpnHierStehtDie.setText(
+				"Blackjack Rules\n\nObjective:\nAchieve a hand value closer to 21 than the dealer without exceeding 21.\n\nGameplay:\n\n\t1.\tBet:\n\t\t• Place a wager before the cards are dealt.\n\t2.\tDealing:\n\t\t• Each player and the dealer receive two cards. One of the dealer’s cards is face down.\n\t3.\tPlayer Options:\n\t\t• Draw a Card: Take additional cards to increase the value of your hand.\n\t\t• Stand: End your turn and keep your current hand.\n\t\t• Double: Double your bet and receive one additional card.\n\t  \t• Split: If you have two cards of the same value, split them into two separate hands and \t\t                     play each hand individually.\n\t\t• All In: Wager all your chips on one hand.\n\t4.\tDealer’s Play:\n\t\t• The dealer reveals their face-down card and draws until they reach at least 17 points.");
 		txtpnHierStehtDie.setBounds(120, 80, 783, 443);
 		panel.add(txtpnHierStehtDie);
 	}
+
 	public void setVisible(boolean visible) {
-        frame.setVisible(visible);
-    }
-	
+		frame.setVisible(visible);
+	}
+
 }

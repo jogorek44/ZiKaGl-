@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.Color;
 import java.awt.Font;
+import Logic.FileHandler;
 
 public class AdminView {
 
@@ -46,6 +47,8 @@ public class AdminView {
 	 */
 	public AdminView() {
 		initialize();
+		loadAndDisplayCartData();
+		
 	}
 
 	/**
@@ -73,7 +76,7 @@ public class AdminView {
 		panel.add(btnNewButton);
 		
 		
-		JLabel lblNewLabel_1_1 = new JLabel("Table 1");
+		JLabel lblNewLabel_1_1 = new JLabel("Player 1");
 		lblNewLabel_1_1.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
 		lblNewLabel_1_1.setBounds(549, 188, 117, 29);
 		panel.add(lblNewLabel_1_1);
@@ -91,7 +94,7 @@ public class AdminView {
 		panel.add(textField);
 		
 		
-		JLabel lblNewLabel_3_1 = new JLabel("Table 3");
+		JLabel lblNewLabel_3_1 = new JLabel("Player 3");
 		lblNewLabel_3_1.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
 		lblNewLabel_3_1.setBounds(549, 347, 135, 43);
 		panel.add(lblNewLabel_3_1);
@@ -110,7 +113,7 @@ public class AdminView {
 		panel.add(textField_2);
 		
 		
-		JLabel lblNewLabel_4_1 = new JLabel("Table 4");
+		JLabel lblNewLabel_4_1 = new JLabel("Player 4");
 		lblNewLabel_4_1.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
 		lblNewLabel_4_1.setBounds(789, 353, 135, 31);
 		panel.add(lblNewLabel_4_1);
@@ -122,7 +125,7 @@ public class AdminView {
 		panel.add(textField_3);
 		
 		
-		JLabel lblNewLabel_2_1 = new JLabel("Table 2");
+		JLabel lblNewLabel_2_1 = new JLabel("Player 2");
 		lblNewLabel_2_1.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
 		lblNewLabel_2_1.setBounds(789, 187, 156, 31);
 		panel.add(lblNewLabel_2_1);
@@ -134,7 +137,7 @@ public class AdminView {
 		panel.add(lblOrder);
 		
 		
-		JLabel lblNewLabel_1_1_1 = new JLabel("Table 1");
+		JLabel lblNewLabel_1_1_1 = new JLabel("Player 1");
 		lblNewLabel_1_1_1.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
 		lblNewLabel_1_1_1.setBounds(18, 188, 117, 29);
 		panel.add(lblNewLabel_1_1_1);
@@ -142,11 +145,11 @@ public class AdminView {
 		
 		textField_4 = new JTextField();
 		textField_4.setColumns(10);
-		textField_4.setBounds(18, 230, 218, 94);
+		textField_4.setBounds(18, 230, 227, 94);
 		panel.add(textField_4);
 		
 		
-		JLabel lblNewLabel_3_1_1 = new JLabel("Table 3");
+		JLabel lblNewLabel_3_1_1 = new JLabel("Player 3");
 		lblNewLabel_3_1_1.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
 		lblNewLabel_3_1_1.setBounds(18, 347, 135, 43);
 		panel.add(lblNewLabel_3_1_1);
@@ -154,18 +157,18 @@ public class AdminView {
 		
 		textField_5 = new JTextField();
 		textField_5.setColumns(10);
-		textField_5.setBounds(19, 397, 218, 94);
+		textField_5.setBounds(19, 397, 227, 94);
 		panel.add(textField_5);
 		
 		
 		textField_6 = new JTextField();
 		textField_6.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
 		textField_6.setColumns(10);
-		textField_6.setBounds(258, 396, 218, 94);
+		textField_6.setBounds(258, 396, 227, 94);
 		panel.add(textField_6);
 		
 		
-		JLabel lblNewLabel_4_1_1 = new JLabel("Table 4");
+		JLabel lblNewLabel_4_1_1 = new JLabel("Player 4");
 		lblNewLabel_4_1_1.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
 		lblNewLabel_4_1_1.setBounds(258, 353, 135, 31);
 		panel.add(lblNewLabel_4_1_1);
@@ -173,11 +176,11 @@ public class AdminView {
 		
 		textField_7 = new JTextField();
 		textField_7.setColumns(10);
-		textField_7.setBounds(258, 230, 218, 94);
+		textField_7.setBounds(258, 230, 227, 94);
 		panel.add(textField_7);
+	
 		
-		
-		JLabel lblNewLabel_2_1_1 = new JLabel("Table 2");
+		JLabel lblNewLabel_2_1_1 = new JLabel("Player 2");
 		lblNewLabel_2_1_1.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
 		lblNewLabel_2_1_1.setBounds(258, 187, 156, 31);
 		panel.add(lblNewLabel_2_1_1);
@@ -185,5 +188,23 @@ public class AdminView {
 	public void setVisible(boolean visible) {
         frame.setVisible(visible);
     }
-	
+	private void loadAndDisplayCartData() {
+	    String[] cartData = FileHandler.loadShoppingCart();
+	    
+
+	    if (cartData[0] != null) {
+	        textField.setText(cartData[0]);
+	    } else {
+	        textField.setText("N/A");
+	    }
+	    if (cartData[1] != null) {
+	        textField_4.setText(cartData[1]);
+	    } else {
+	        textField_4.setText("N/A");
+	    }
+	}
+	public void updateCartData(String price, String quantity) {
+	    textField_1.setText(price);
+	    textField_4.setText(quantity);
+	}
 }
