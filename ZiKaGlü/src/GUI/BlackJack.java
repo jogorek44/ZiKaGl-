@@ -71,6 +71,18 @@ public class BlackJack {
 
 		timer = new JLabel("");
 		timer.setVisible(false);
+		
+		reset = new TransparentButton("All In");
+		reset.setText("reset");
+		reset.setFont(new Font("Dialog", Font.PLAIN, 20));
+		reset.setBounds(313, 521, 130, 32);
+		reset.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			if(balance.getText()!= "")
+				amountToBet.setText(balance.getText());
+		}
+	});
+		panel.add(reset);
 		timer.setHorizontalAlignment(SwingConstants.CENTER);
 		timer.setFont(new Font("Tahoma", Font.BOLD, 80));
 		timer.setForeground(Color.WHITE);
@@ -103,18 +115,6 @@ public class BlackJack {
 			}
 		});
 
-		reset = new TransparentButton("reset");
-		reset.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		reset.setBounds(313, 521, 117, 32);
-		panel.add(bet);
-		reset.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				amountToBet.setText(String.valueOf(Integer.parseInt(balance.getText())+Integer.parseInt(amountToBet.getText())));
-				bet.setEnabled(true);
-				amountToBet.setText("");
-				amountToBet.setEnabled(true);
-			}
-		});
 
 		split = new TransparentButton("Split");
 		split.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
@@ -224,6 +224,7 @@ public class BlackJack {
 		Image img = new ImageIcon(this.getClass().getResource("/Blackjack1.jpg")).getImage();
 		lblNewLabel_3.setIcon(new ImageIcon(img));
 		panel.add(lblNewLabel_3);
+		
 	}
 
 	public void setVisible(boolean visible) {
