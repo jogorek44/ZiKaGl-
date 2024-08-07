@@ -90,5 +90,6 @@ public class Main {
 		for(int i = 0; i <4; i++){menus[i].getBlackjack().getBalance().setText(String.valueOf(menus[i].getPlayer().getBank()));
 			menus[i].getBlackjack().dealersCards.setText(BlackJack.cardsString(g.getDealerCards()));
 		}
+		startGame();
 	}
-	}
+}
