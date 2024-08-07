@@ -5,6 +5,7 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.Timer;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
@@ -28,6 +29,9 @@ public class BlackJack {
 	private JTextField winOrLoss;
 	TransparentButton shop_button;
 	TransparentButton menu_button;
+	private JLabel timer;
+	private boolean isTimerFinished;
+
 	/**
 	 * Launch the application.
 	 */
@@ -61,7 +65,14 @@ public class BlackJack {
 		JPanel panel = new JPanel();
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
- 
+
+		timer = new JLabel("");
+		timer.setVisible(false);
+		timer.setHorizontalAlignment(SwingConstants.CENTER);
+		timer.setFont(new Font("Tahoma", Font.BOLD, 80));
+		timer.setBounds(434, 216, 117, 70);
+		panel.add(timer);
+
 		menu_button = new TransparentButton("Menu");
 		menu_button.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		menu_button.setBounds(6, 13, 117, 32);
@@ -87,7 +98,6 @@ public class BlackJack {
 		shop_button.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		shop_button.setBounds(6, 57, 117, 32);
 		panel.add(shop_button);
-		
 
 		dealersCards = new JTextField();
 		dealersCards.setHorizontalAlignment(SwingConstants.CENTER);
@@ -184,6 +194,60 @@ public class BlackJack {
 
 	public void setVisible(boolean visible) {
 		frame.setVisible(visible);
+	}
+
+	public void startTimer(int time) {
+		setTimerFinished(false);
+		timer.setVisible(true);
+		Timer countdownTimer = new Timer(1000, new ActionListener() {
+			int countdown = time;
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (countdown > 0) {
+					timer.setText(String.valueOf(countdown));
+					countdown--;
+				} else {
+					((Timer) e.getSource()).stop();
+					timer.setVisible(false);
+					setTimerFinished(true);
+				}
+			}
+		});
+
+		countdownTimer.start();
+	}
+	/*
+	 * public void startTimer(int time) { while (time != 1) { if (frame.isVisible())
+	 * timer.setVisible(true); else timer.setVisible(false);
+	 * timer.setText(String.valueOf(time--)); System.out.print(time); try {
+	 * Thread.sleep(1000); } catch (InterruptedException e) {
+	 * Thread.currentThread().interrupt(); } } timer.setVisible(false); }
+	 */
+
+	public boolean isTimerFinished() {
+		return isTimerFinished;
+	}
+
+	public void setTimerFinished(boolean isTimerFinished) {
+		this.isTimerFinished = isTimerFinished;
+	}
+	
+
+	public JTextField getBalance() {
+		return balance;
+	}
+
+	public void setBalance(JTextField balance) {
+		this.balance = balance;
+	}
+
+	public String getAmountToBet() {
+		return amountToBet.getText();
+	}
+
+	public void String(String amountToBet) {
+		this.amountToBet.setText(amountToBet);
 	}
 
 }

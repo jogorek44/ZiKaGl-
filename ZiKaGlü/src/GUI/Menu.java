@@ -11,6 +11,9 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 
 import javax.swing.SwingConstants;
+
+import BlackJack.Player;
+
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -25,6 +28,7 @@ public class Menu {
 	private Shop shop;
 	private BlackJack blackjack;
 	private int id;
+	private Player player;
 	/**
 	 * 
 	 * 
@@ -43,6 +47,7 @@ public class Menu {
 	public Menu(int id) {
 		setId(id);
 		initialize();
+		setPlayer(new Player());
 	}
 
 	/**
@@ -219,5 +224,29 @@ public class Menu {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public Player getPlayer() {
+		return player;
+	}
+
+	public void setPlayer(Player player) {
+		this.player = player;
+	}
+
+	public Shop getShop() {
+		return shop;
+	}
+
+	public void setShop(Shop shop) {
+		this.shop = shop;
+	}
+
+	public BlackJack getBlackjack() {
+		return blackjack;
+	}
+
+	public void setBlackjack(BlackJack blackjack) {
+		this.blackjack = blackjack;
 	}
 }

@@ -68,7 +68,7 @@ public class AdminView {
 		btnNewButton.setBounds(6, 6, 117, 29);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Menu menu = new Menu();
+				Menu menu = new Menu(0);
 				menu.setVisible(true);
 				frame.dispose();
 				}
