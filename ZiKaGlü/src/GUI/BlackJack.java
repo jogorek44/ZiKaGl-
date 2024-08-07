@@ -10,6 +10,7 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -77,12 +78,21 @@ public class BlackJack {
 		reset.setFont(new Font("Dialog", Font.PLAIN, 20));
 		reset.setBounds(313, 521, 130, 32);
 		reset.addActionListener(new ActionListener() {
-		public void actionPerformed(ActionEvent e) {
-			if(balance.getText()!= "")
-				amountToBet.setText(balance.getText());
-		}
-	});
+			public void actionPerformed(ActionEvent e) {
+				if(balance.getText()=="0" && !amountToBet.isEnabled()) {
+
+				}
+				else if(!amountToBet.isEnabled()){
+				amountToBet.setEnabled(true);
+				balance.setText(String.valueOf(Integer.valueOf(amountToBet.getText())+Integer.valueOf(balance.getText())));
+				bet.setEnabled(true);
+				allIn.setEnabled(true);
+				amountToBet.setText("");
+				} else amountToBet.setText("");
+			}
+		});
 		panel.add(reset);
+
 		timer.setHorizontalAlignment(SwingConstants.CENTER);
 		timer.setFont(new Font("Tahoma", Font.BOLD, 80));
 		timer.setForeground(Color.WHITE);
@@ -106,7 +116,8 @@ public class BlackJack {
 		panel.add(bet);
 		bet.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(Integer.parseInt(amountToBet.getText())<=Integer.parseInt(balance.getText())){
+				if(balance.getText()=="" || balance.getText()=="0") JOptionPane.showMessageDialog(panel, "Falsche Angabe");
+				else if(Integer.parseInt(amountToBet.getText())<=Integer.parseInt(balance.getText())){
 					amountToBet.setEnabled(false);
 					bet.setEnabled(false);
 					allIn.setEnabled(false);
@@ -190,8 +201,14 @@ public class BlackJack {
 		allIn.setBounds(184, 521, 117, 32);
 		allIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(balance.getText()!= "")
+				if(balance.getText() != "0"){
 					amountToBet.setText(balance.getText());
+					amountToBet.setEnabled(false);
+					balance.setText("0");
+					bet.setEnabled(false);
+					allIn.setEnabled(false);
+				}
+				else JOptionPane.showMessageDialog(null, "Kontostand ist leer");
 			}
 		});
 		panel.add(allIn);
@@ -251,13 +268,6 @@ public class BlackJack {
 		});
 		countdownTimer.start();
 	}
-	/*
-	 * public void startTimer(int time) { while (time != 1) { if (frame.isVisible())
-	 * timer.setVisible(true); else timer.setVisible(false);
-	 * timer.setText(String.valueOf(time--)); System.out.print(time); try {
-	 * Thread.sleep(1000); } catch (InterruptedException e) {
-	 * Thread.currentThread().interrupt(); } } timer.setVisible(false); }
-	 */
 
 	public boolean isTimerFinished() {
 		return isTimerFinished;
@@ -291,6 +301,7 @@ public class BlackJack {
 		stand.setEnabled(true);
 		split.setEnabled(true);
 		doub.setEnabled(true);
+		reset.setEnabled(false);
 	}
 
 	public void afk(){
@@ -302,6 +313,7 @@ public class BlackJack {
 		stand.setEnabled(false);
 		split.setEnabled(false);
 		doub.setEnabled(false);
+		reset.setEnabled(false);
 	}
 
 	public void betTime(){
@@ -313,5 +325,6 @@ public class BlackJack {
 		stand.setEnabled(false);
 		split.setEnabled(false);
 		doub.setEnabled(false);
+		reset.setEnabled(true);
 	}
 }
