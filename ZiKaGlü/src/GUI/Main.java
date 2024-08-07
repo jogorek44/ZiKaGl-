@@ -2,7 +2,6 @@ package GUI;
 
 import bj.*;
 import java.util.Arrays;
-import java.util.stream.Collectors;
 
 public class Main {
 
@@ -52,7 +51,6 @@ public class Main {
 			//System.out.println(menus[i].getBlackjack().getAmountToBet());
 			if(!menus[i].getBlackjack().getAmountToBet().isEnabled()){
 				menus[i].setBet(Integer.parseInt(menus[i].getBlackjack().getAmountToBet().getText()));
-				menus[i].getBlackjack().roundstart();
 			}		
 			else menus[i].getBlackjack().afk();
 		}
@@ -78,13 +76,20 @@ public class Main {
 			g.bet(pl.getId(), menus[pl.getId()-1].getBet());
 		}
 		g.startSplitting();
+		for(var pl : p)
+			g.setDoneSplitting(pl.getId());
+		g.startHitting();
 		for(var pl : p){
-			menus[pl.getId()-1].getBlackjack().yourCards.setText(cardsString(g.getCards(pl.getId(), 0)));
-			menus[pl.getId()-1].getBlackjack().dealersCards.setText(cardsString(g.getDealerCards()));
+			
 			System.out.println(Arrays.toString(g.getCards(pl.getId(), 0)));
+			menus[pl.getId()-1].getBlackjack().roundstart(g, pl);
+		}
+		while(!g.isEveryoneDoneHitting());
+		for(var pl : g.endGame()){
+			menus[pl.getId()-1].getPlayer().setBank(pl.getBank());
+		}
+		for(int i = 0; i <4; i++){menus[i].getBlackjack().getBalance().setText(String.valueOf(menus[i].getPlayer().getBank()));
+			menus[i].getBlackjack().dealersCards.setText(BlackJack.cardsString(g.getDealerCards()));
 		}
 	}
-	private static String cardsString(Card[] c){
-		return Arrays.stream(c).map(Object::toString).collect(Collectors.joining("\n"));
 	}
-}

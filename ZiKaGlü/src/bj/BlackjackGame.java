@@ -40,7 +40,7 @@ public final class BlackjackGame {
 	}
 
 	private void assertHittingPhase() {
-		if (phase != 2) throw new IllegalStateException("not in betting phase");
+		if (phase != 2) throw new IllegalStateException("not in hitting phase");
 	}
 
 	private int getGameSum(GameData gd) {
@@ -115,19 +115,19 @@ public final class BlackjackGame {
 	}
 
 	public boolean isEveryoneDoneHitting() {
-		assertBettingPhase();
+		assertHittingPhase();
 		return Arrays.stream(data).allMatch(pd -> pd.hittingDone || pd.games.stream().allMatch(g -> getGameSum(g) >= 21));
 	}
 
 	public int[] getPossibleHits(int id) {
-		assertBettingPhase();
+		assertHittingPhase();
 		var pd = data[getIndexOf(id)];
 		if (pd.hittingDone) throw new IllegalArgumentException("player already done hitting");
 		return IntStream.range(0, pd.games.size()).filter(i -> getGameSum(pd.games.get(i)) < 21).toArray();
 	}
 
 	public void setDoneHitting(int id) {
-		assertBettingPhase();
+		assertHittingPhase();
 		var pd = data[getIndexOf(id)];
 		if (pd.hittingDone) throw new IllegalArgumentException("player already done hitting");
 		pd.hittingDone = true;

@@ -1,17 +1,24 @@
 package GUI;
 
+import bj.BlackjackGame;
+import bj.Card;
+import bj.Player;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
@@ -19,8 +26,8 @@ import javax.swing.Timer;
 public class BlackJack {
 
 	JFrame frame;
-	JTextField dealersCards;
-	JTextField yourCards;
+	JTextArea dealersCards;
+	JTextArea yourCards;
 	private JTextField balance;
 	private JTextField amountToBet;
 	private JTextField winOrLoss;
@@ -32,10 +39,10 @@ public class BlackJack {
 	private TransparentButton reset;
 	private TransparentButton hit;
 	private TransparentButton stand;
-	private TransparentButton doub;
-	private TransparentButton split;
 	private TransparentButton allIn;
 	private boolean afk = false;
+	private BlackjackGame hs;
+	private Player pl;
 	/**
 	 * Launch the application.
 	 */
@@ -108,6 +115,15 @@ public class BlackJack {
 		hit = new TransparentButton("Hit");
 		hit.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
 		hit.setBounds(329, 370, 130, 70);
+		hit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				hs.hit(pl.getId(),0);
+				var var = hs.getPossibleHits(pl.getId()).length!=0;
+				hit.setEnabled(var);
+				stand.setEnabled(var);
+				yourCards.setText(cardsString(hs.getCards(pl.getId(), 0)));
+			}
+		});
 		panel.add(hit);
 
 		bet = new TransparentButton("Bet");
@@ -127,19 +143,21 @@ public class BlackJack {
 		});
 
 
-		split = new TransparentButton("Split");
+		/*split = new TransparentButton("Split");
 		split.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
 		split.setBounds(619, 370, 130, 70);
 		panel.add(split);
+		*/
 
 		shop_button = new TransparentButton("Shop");
 		shop_button.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		shop_button.setBounds(6, 57, 117, 32);
 		panel.add(shop_button);
 
-		dealersCards = new JTextField();
-		dealersCards.setHorizontalAlignment(SwingConstants.CENTER);
+		dealersCards = new JTextArea();
 		dealersCards.setEditable(false);
+		dealersCards.setWrapStyleWord(true);
+		dealersCards.setAlignmentX(SwingConstants.CENTER);
 		dealersCards.setForeground(Color.WHITE);
 		dealersCards.setText("<Karte>");
 		dealersCards.setBounds(184, 76, 130, 157);
@@ -147,8 +165,9 @@ public class BlackJack {
 		dealersCards.setColumns(10);
 		panel.add(dealersCards);
 
-		yourCards = new JTextField();
-		yourCards.setHorizontalAlignment(SwingConstants.CENTER);
+		yourCards = new JTextArea();
+		yourCards.setWrapStyleWord(true);
+		yourCards.setAlignmentX(SwingConstants.CENTER);
 		yourCards.setEditable(false);
 		yourCards.setForeground(Color.WHITE);
 		yourCards.setBackground(new Color(150, 150, 150, 128));
@@ -216,12 +235,14 @@ public class BlackJack {
 		stand = new TransparentButton("Stand");
 		stand.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
 		stand.setBounds(184, 370, 130, 70);
+		stand.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				hs.setDoneHitting(pl.getId());
+				hit.setEnabled(false);
+				stand.setEnabled(false);
+			}
+		});
 		panel.add(stand);
-
-		doub = new TransparentButton("Double");
-		doub.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
-		doub.setBounds(474, 370, 130, 70);
-		panel.add(doub);
 
 		winOrLoss = new JTextField("");
 		winOrLoss.setFont(new Font("Lucida Grande", Font.PLAIN, 70));
@@ -297,16 +318,19 @@ public class BlackJack {
 	public boolean isAfk(){
 		return this.afk;
 	}
-	public void roundstart(){
+	public void roundstart(BlackjackGame temp, Player p){
+		hs = temp;
+		pl = p;
+		var var = temp.getPossibleHits(p.getId()).length!=0;
 		afk = false;
 		bet.setEnabled(false);
 		allIn.setEnabled(false);
-		hit.setEnabled(true);
-		stand.setEnabled(true);
-		split.setEnabled(true);
-		doub.setEnabled(true);
+		hit.setEnabled(var);
+		stand.setEnabled(var);
 		reset.setEnabled(false);
-	}
+		yourCards.setText(cardsString(hs.getCards(pl.getId(), 0)));
+		dealersCards.setText(cardsString(hs.getDealerCards()));
+		}
 
 	public void afk(){
 		afk = true;
@@ -315,20 +339,20 @@ public class BlackJack {
 		allIn.setEnabled(false);
 		hit.setEnabled(false);
 		stand.setEnabled(false);
-		split.setEnabled(false);
-		doub.setEnabled(false);
 		reset.setEnabled(false);
 	}
 
 	public void betTime(){
-		afk = true;
+		afk = false;
 		amountToBet.setEnabled(true);
 		bet.setEnabled(true);
 		allIn.setEnabled(true);
 		hit.setEnabled(false);
 		stand.setEnabled(false);
-		split.setEnabled(false);
-		doub.setEnabled(false);
 		reset.setEnabled(true);
+	}
+
+	public static String cardsString(Card[] c){
+		return Arrays.stream(c).map(Object::toString).collect(Collectors.joining("\n"));
 	}
 }
