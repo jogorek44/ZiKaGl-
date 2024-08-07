@@ -159,7 +159,7 @@ public class BlackJack {
 		dealersCards.setWrapStyleWord(true);
 		dealersCards.setAlignmentX(SwingConstants.CENTER);
 		dealersCards.setForeground(Color.WHITE);
-		dealersCards.setText("<Karte>");
+		dealersCards.setText("Hier wäre die Karte des Dealers");
 		dealersCards.setBounds(184, 76, 130, 157);
 		dealersCards.setBackground(new Color(150, 150, 150, 128));
 		dealersCards.setColumns(10);
@@ -171,7 +171,7 @@ public class BlackJack {
 		yourCards.setEditable(false);
 		yourCards.setForeground(Color.WHITE);
 		yourCards.setBackground(new Color(150, 150, 150, 128));
-		yourCards.setText("<Karte>");
+		yourCards.setText("Hier wäre deine Karte");
 		yourCards.setBounds(680, 76, 130, 169);
 		yourCards.setColumns(10);
 		panel.add(yourCards);
