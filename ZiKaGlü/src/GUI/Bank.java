@@ -26,19 +26,30 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import Logic.BalanceFileHandler;
+import Logic.FileHandler;
 
 public class Bank {
 
-	private JFrame frame;
+	public JFrame frame;
 	static Label balanceLabel;
 	private JTextField balanceField;
 	public static double balance = 0.0;
+<<<<<<< HEAD
 
+=======
+    public static final String BALANCE_FILE = "balance.txt";
+    private FileHandler balanceFileHandler;
+    public TransparentButton menu_button;
+>>>>>>> 9e7e18a98fd803d1a66e1369d5ee81d52ab1d091
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+<<<<<<< HEAD
+=======
+		// Kontostand aus Datei laden
+        FileHandler.loadBalanceFromFile();
+>>>>>>> 9e7e18a98fd803d1a66e1369d5ee81d52ab1d091
         
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -62,6 +73,10 @@ public class Bank {
 	 */
 	public Bank() {
 		initialize();
+<<<<<<< HEAD
+=======
+		this.balanceFileHandler = new FileHandler();
+>>>>>>> 9e7e18a98fd803d1a66e1369d5ee81d52ab1d091
 	}
 
 	/**
@@ -113,13 +128,36 @@ public class Bank {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				try {
+<<<<<<< HEAD
+=======
+					
+					//balanceLabel.setText(String.valueOf(Double.valueOf(balanceLabel.getText())+Double.valueOf(balanceField.getText())));
+					//balanceField.setText("");
+					 String amountText = balanceField.getText();
+
+					    // Überprüfen, ob mehr als zwei Nachkommastellen vorhanden sind
+					    if (amountText.contains(".") && amountText.split("\\.")[1].length() > 2) {
+					        JOptionPane.showMessageDialog(frame, "Please enter a valid amount with two decimal places.", "Error", JOptionPane.ERROR_MESSAGE);
+					        return;
+					    }
+					
+>>>>>>> 9e7e18a98fd803d1a66e1369d5ee81d52ab1d091
 					double amount = Double.parseDouble(balanceField.getText());
+					 if (amount < 0) {
+	                        JOptionPane.showMessageDialog(frame, "Deposit amount cannot be negative.", "Error", JOptionPane.ERROR_MESSAGE);
+	                        return; 
+	                    }
+					 
                     balance += amount;
                     balanceLabel.setText(String.format("%.2f", balance));
                     balanceField.setText("");
+<<<<<<< HEAD
                     BalanceFileHandler.saveBalanceToFile();
                     //hier das panel aktualisieren, damit die schrift vom balnaceLabel wieder schwarz wird, wenn es negativ war und man genügend deposited
                     
+=======
+                    FileHandler.saveBalanceToFile();
+>>>>>>> 9e7e18a98fd803d1a66e1369d5ee81d52ab1d091
 				} catch (NumberFormatException ex) {
 					JOptionPane.showMessageDialog(frame, "Please enter a valid amount", "Error", JOptionPane.ERROR_MESSAGE);				}
 			}
@@ -128,16 +166,9 @@ public class Bank {
 		panel.add(btnNewButton);
 		
 		
-		TransparentButton btnNewButton_8 = new TransparentButton("Menu");
-		btnNewButton_8.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Menu menu = new Menu();
-				menu.setVisible(true);
-				frame.dispose();
-				}
-		});
-		btnNewButton_8.setBounds(6, 6, 117, 29);
-		panel.add(btnNewButton_8);
+		menu_button = new TransparentButton("Menu");
+		menu_button.setBounds(6, 6, 117, 29);
+		panel.add(menu_button);
 		
 		
 		JLabel lblNewLabel_1 = new JLabel("");
