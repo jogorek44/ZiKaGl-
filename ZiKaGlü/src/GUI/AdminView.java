@@ -14,22 +14,24 @@ import java.awt.Color;
 import java.awt.Font;
 import Logic.FileHandler;
 
+/**
+ * 
+ */
 public class AdminView {
 
+	
 	private JFrame frame;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
-	private JTextField[] arr = { };
-
-	/**
-	 * Launch the application.
-	 */
+	private JTextField p1_bal;
+	private JTextField p3_bal;
+	private JTextField p4_bal;
+	private JTextField p2_bal;
+	private JTextField p1_text;
+	private JTextField p3_text;
+	private JTextField p4_text;
+	private JTextField p2_text;
+	private JTextField[] arr_bal = {p1_bal, p2_bal, p3_bal, p4_bal};
+	private JTextField[] arr_text = {p1_text, p2_text, p3_text, p4_text};
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -64,17 +66,6 @@ public class AdminView {
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 		
-		JButton btnNewButton = new JButton("Menu");
-		btnNewButton.setBounds(6, 6, 117, 29);
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Menu menu = new Menu(0);
-				menu.setVisible(true);
-				frame.dispose();
-				}
-		});
-		panel.add(btnNewButton);
-		
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Player 1");
 		lblNewLabel_1_1.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
@@ -88,10 +79,11 @@ public class AdminView {
 		panel.add(lblBalance);
 		
 		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(549, 230, 218, 94);
-		panel.add(textField);
+		p1_bal = new JTextField();
+		p1_bal.setEditable(false);
+		p1_bal.setColumns(10);
+		p1_bal.setBounds(549, 230, 218, 94);
+		panel.add(p1_bal);
 		
 		
 		JLabel lblNewLabel_3_1 = new JLabel("Player 3");
@@ -100,17 +92,19 @@ public class AdminView {
 		panel.add(lblNewLabel_3_1);
 		
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(550, 397, 218, 94);
-		panel.add(textField_1);
+		p3_bal = new JTextField();
+		p3_bal.setEditable(false);
+		p3_bal.setColumns(10);
+		p3_bal.setBounds(550, 397, 218, 94);
+		panel.add(p3_bal);
 		
 		
-		textField_2 = new JTextField();
-		textField_2.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
-		textField_2.setColumns(10);
-		textField_2.setBounds(789, 396, 218, 94);
-		panel.add(textField_2);
+		p4_bal = new JTextField();
+		p4_bal.setEditable(false);
+		p4_bal.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
+		p4_bal.setColumns(10);
+		p4_bal.setBounds(789, 396, 218, 94);
+		panel.add(p4_bal);
 		
 		
 		JLabel lblNewLabel_4_1 = new JLabel("Player 4");
@@ -119,10 +113,11 @@ public class AdminView {
 		panel.add(lblNewLabel_4_1);
 		
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(789, 230, 218, 94);
-		panel.add(textField_3);
+		p2_bal = new JTextField();
+		p2_bal.setEditable(false);
+		p2_bal.setColumns(10);
+		p2_bal.setBounds(789, 230, 218, 94);
+		panel.add(p2_bal);
 		
 		
 		JLabel lblNewLabel_2_1 = new JLabel("Player 2");
@@ -137,53 +132,57 @@ public class AdminView {
 		panel.add(lblOrder);
 		
 		
-		JLabel lblNewLabel_1_1_1 = new JLabel("Player 1");
-		lblNewLabel_1_1_1.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
-		lblNewLabel_1_1_1.setBounds(18, 188, 117, 29);
-		panel.add(lblNewLabel_1_1_1);
+		JLabel p1_label = new JLabel("Player 1");
+		p1_label.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
+		p1_label.setBounds(18, 188, 117, 29);
+		panel.add(p1_label);
 		
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(18, 230, 227, 94);
-		panel.add(textField_4);
+		p1_text = new JTextField();
+		p1_text.setEditable(false);
+		p1_text.setColumns(10);
+		p1_text.setBounds(18, 230, 227, 94);
+		panel.add(p1_text);
 		
 		
-		JLabel lblNewLabel_3_1_1 = new JLabel("Player 3");
-		lblNewLabel_3_1_1.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
-		lblNewLabel_3_1_1.setBounds(18, 347, 135, 43);
-		panel.add(lblNewLabel_3_1_1);
+		JLabel p3_label = new JLabel("Player 3");
+		p3_label.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
+		p3_label.setBounds(18, 347, 135, 43);
+		panel.add(p3_label);
 		
 		
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
-		textField_5.setBounds(19, 397, 227, 94);
-		panel.add(textField_5);
+		p3_text = new JTextField();
+		p3_text.setEditable(false);
+		p3_text.setColumns(10);
+		p3_text.setBounds(19, 397, 227, 94);
+		panel.add(p3_text);
 		
 		
-		textField_6 = new JTextField();
-		textField_6.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
-		textField_6.setColumns(10);
-		textField_6.setBounds(258, 396, 227, 94);
-		panel.add(textField_6);
+		p4_text = new JTextField();
+		p4_text.setEditable(false);
+		p4_text.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
+		p4_text.setColumns(10);
+		p4_text.setBounds(258, 396, 227, 94);
+		panel.add(p4_text);
 		
 		
-		JLabel lblNewLabel_4_1_1 = new JLabel("Player 4");
-		lblNewLabel_4_1_1.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
-		lblNewLabel_4_1_1.setBounds(258, 353, 135, 31);
-		panel.add(lblNewLabel_4_1_1);
+		JLabel p4_label = new JLabel("Player 4");
+		p4_label.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
+		p4_label.setBounds(258, 353, 135, 31);
+		panel.add(p4_label);
 		
 		
-		textField_7 = new JTextField();
-		textField_7.setColumns(10);
-		textField_7.setBounds(258, 230, 227, 94);
-		panel.add(textField_7);
+		p2_text = new JTextField();
+		p2_text.setEditable(false);
+		p2_text.setColumns(10);
+		p2_text.setBounds(258, 230, 227, 94);
+		panel.add(p2_text);
 	
 		
-		JLabel lblNewLabel_2_1_1 = new JLabel("Player 2");
-		lblNewLabel_2_1_1.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
-		lblNewLabel_2_1_1.setBounds(258, 187, 156, 31);
-		panel.add(lblNewLabel_2_1_1);
+		JLabel p2_label = new JLabel("Player 2");
+		p2_label.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
+		p2_label.setBounds(258, 187, 156, 31);
+		panel.add(p2_label);
 	}
 	public void setVisible(boolean visible) {
         frame.setVisible(visible);
@@ -193,18 +192,98 @@ public class AdminView {
 	    
 
 	    if (cartData[0] != null) {
-	        textField.setText(cartData[0]);
+	        p1_bal.setText(cartData[0]);
 	    } else {
-	        textField.setText("N/A");
+	        p1_bal.setText("N/A");
 	    }
 	    if (cartData[1] != null) {
-	        textField_4.setText(cartData[1]);
+	        p1_text.setText(cartData[1]);
 	    } else {
-	        textField_4.setText("N/A");
+	        p1_text.setText("N/A");
 	    }
 	}
 	public void updateCartData(String price, String quantity) {
-	    textField_1.setText(price);
-	    textField_4.setText(quantity);
+	    p3_bal.setText(price);
+	    p1_text.setText(quantity);
 	}
+	public JTextField getP1_bal() {
+		return p1_bal;
+	}
+
+	public void setP1_bal(JTextField p1_bal) {
+		this.p1_bal = p1_bal;
+	}
+
+	public JTextField getP3_bal() {
+		return p3_bal;
+	}
+
+	public void setP3_bal(JTextField p3_bal) {
+		this.p3_bal = p3_bal;
+	}
+
+	public JTextField getP4_bal() {
+		return p4_bal;
+	}
+
+	public void setP4_bal(JTextField p4_bal) {
+		this.p4_bal = p4_bal;
+	}
+
+	public JTextField getP2_bal() {
+		return p2_bal;
+	}
+
+	public void setP2_bal(JTextField p2_bal) {
+		this.p2_bal = p2_bal;
+	}
+
+	public JTextField getP1_text() {
+		return p1_text;
+	}
+
+	public void setP1_text(JTextField p1_text) {
+		this.p1_text = p1_text;
+	}
+
+	public JTextField getP3_text() {
+		return p3_text;
+	}
+
+	public void setP3_text(JTextField p3_text) {
+		this.p3_text = p3_text;
+	}
+
+	public JTextField getP4_text() {
+		return p4_text;
+	}
+
+	public void setP4_text(JTextField p4_text) {
+		this.p4_text = p4_text;
+	}
+
+	public JTextField getP2_text() {
+		return p2_text;
+	}
+
+	public void setP2_text(JTextField p2_text) {
+		this.p2_text = p2_text;
+	}
+
+	public JTextField[] getArr_bal() {
+		return arr_bal;
+	}
+
+	public void setArr_bal(JTextField[] arr_bal) {
+		this.arr_bal = arr_bal;
+	}
+
+	public JTextField[] getArr_text() {
+		return arr_text;
+	}
+
+	public void setArr_text(JTextField[] arr_text) {
+		this.arr_text = arr_text;
+	}
+
 }

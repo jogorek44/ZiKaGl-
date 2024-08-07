@@ -1,6 +1,9 @@
 package GUI;
 
 import bj.*;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Arrays;
 
 public class Main {
@@ -22,7 +25,13 @@ public class Main {
 		p1 = new Menu(1);
 		p1.setVisible(true);
 		p1.getBlackjack().betTime();
-
+		p1.shop.checkout.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				a.getArr_bal()[0].setText(p1.getShop().getSum());
+				a.getArr_text()[0].setText(String.valueOf(p1.getShop().getProducts()));
+			}
+		});
+		
 		p2 = new Menu(2);
 		p2.setVisible(true);
 		p2.getBlackjack().betTime();

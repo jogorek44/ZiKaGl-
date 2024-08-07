@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.Color;
 
+import javax.swing.AbstractButton;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -263,5 +264,28 @@ public class Shop {
 		String totalPrice = "Total Price: $" + price;
 		FileHandler.saveShoppingCart(totalPrice, quantityDetails);
 
+	}
+
+	public JTextField getTxtShoppingCart() {
+		return txtShoppingCart;
+	}
+
+	public void setTxtShoppingCart(JTextField txtShoppingCart) {
+		this.txtShoppingCart = txtShoppingCart;
+	}
+
+	public JTextField getTxtSum() {
+		return txtSum;
+	}
+
+	public void setTxtSum(JTextField txtSum) {
+		this.txtSum = txtSum;
+	}
+
+	public String getProducts() {
+		return txtShoppingCart.getText();
+	}
+	public String sum() {
+		return txtSum.getText();
 	}
 }
