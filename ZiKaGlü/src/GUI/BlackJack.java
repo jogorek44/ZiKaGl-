@@ -28,13 +28,13 @@ public class BlackJack {
 	private JLabel timer;
 	private boolean isTimerFinished;
 	private TransparentButton bet;
+	private TransparentButton reset;
 	private TransparentButton hit;
 	private TransparentButton stand;
 	private TransparentButton doub;
 	private TransparentButton split;
 	private TransparentButton allIn;
-	private boolean betState = false;
-	
+	private boolean afk = false;
 	/**
 	 * Launch the application.
 	 */
@@ -100,6 +100,19 @@ public class BlackJack {
 					allIn.setEnabled(false);
 					balance.setText(String.valueOf(Integer.parseInt(balance.getText())-Integer.parseInt(amountToBet.getText()))); 
 				}
+			}
+		});
+
+		reset = new TransparentButton("reset");
+		reset.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		reset.setBounds(313, 521, 117, 32);
+		panel.add(bet);
+		reset.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				amountToBet.setText(String.valueOf(Integer.parseInt(balance.getText())+Integer.parseInt(amountToBet.getText())));
+				bet.setEnabled(true);
+				amountToBet.setText("");
+				amountToBet.setEnabled(true);
 			}
 		});
 
@@ -280,10 +293,18 @@ public class BlackJack {
 	}
 
 	public void afk(){
+		afk = true;
+		amountToBet.setText("");
 		bet.setEnabled(false);
+		allIn.setEnabled(false);
+		hit.setEnabled(false);
+		stand.setEnabled(false);
+		split.setEnabled(false);
+		doub.setEnabled(false);
 	}
 
 	public void betTime(){
+		afk = true;
 		amountToBet.setEnabled(true);
 		bet.setEnabled(true);
 		allIn.setEnabled(true);

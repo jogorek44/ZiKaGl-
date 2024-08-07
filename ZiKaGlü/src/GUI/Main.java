@@ -51,8 +51,10 @@ public class Main {
 	}
 
 	public static void getBets(int count) {
-		for (int i = 0; i < 4; i++) 
+		for (int i = 0; i < 4; i++) {
+			menus[i].getBlackjack().betTime();
 			menus[i].getBlackjack().startTimer(count);
+		}
 		try {
 			Thread.sleep(16000);
 		} catch (InterruptedException e) {
@@ -62,8 +64,9 @@ public class Main {
 				System.out.println(menus[i].getBlackjack().getAmountToBet());
 				if(!menus[i].getBlackjack().getAmountToBet().isEnabled()){
 					menus[i].getPlayer().setBet(Integer.parseInt(menus[i].getBlackjack().getAmountToBet().getText()));
-					menus[i].getBlackjack();
-				}				
+					menus[i].getBlackjack().roundstart();
+				}		
+				else menus[i].getBlackjack().afk();
 		}
 	}
 
