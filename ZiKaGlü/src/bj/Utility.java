@@ -38,15 +38,16 @@ public final class Utility {
 	}
 
 	public static int getSum(IntStream values) {
-		var vals = values.sorted().boxed().toList();
+		var sv = values.sorted().toArray();
 		int nAces = 0;
-		while (nAces < vals.size() && vals.get(nAces) == 1)
-			++nAces;
-		var sum = 11 * nAces + vals.stream().mapToInt(x -> x).sum();
+		while (nAces < sv.length && sv[nAces] == 1) ++nAces;
+		var sum = 11 * nAces + IntStream.range(nAces, sv.length)
+			.map(i -> Math.min(sv[i], 10))
+			.sum();
 		for (int i = 0; sum > 21 && i < nAces; i++)
-			sum -= 10;
+		  sum -= 10;
 		return sum;
-	}
+	  }
 
 	public static boolean contains(int[] arr, int val) {
 		return Arrays.stream(arr).anyMatch(x -> x == val);

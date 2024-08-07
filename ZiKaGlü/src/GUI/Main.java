@@ -10,6 +10,7 @@ public class Main {
 	static Menu p2;
 	static Menu p3;
 	static Menu p4;
+	static AdminView a;
 	private static boolean[] activePlayers;
 
 	public static void main(String[] args) {
@@ -38,6 +39,8 @@ public class Main {
 		menus[1] = p2;
 		menus[2] = p3;
 		menus[3] = p4;
+		
+		a = new AdminView();
 	}
 
 

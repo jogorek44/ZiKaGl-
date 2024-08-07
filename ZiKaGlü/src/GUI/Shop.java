@@ -35,7 +35,8 @@ public class Shop {
 	public String menge;
 	private FileHandler balanceFileHandler;
 	public TransparentButton bj_button;
-
+	TransparentButton checkout;
+	
 	public static void main(String[] args) {
 		FileHandler.loadBalanceFromFile();
 		EventQueue.invokeLater(new Runnable() {
@@ -175,8 +176,8 @@ public class Shop {
 		btnNewButton_3.setBounds(728, 369, 117, 32);
 		panel.add(btnNewButton_3);
 
-		TransparentButton btnNewButton_4 = new TransparentButton("Checkout");
-		btnNewButton_4.addActionListener(new ActionListener() {
+		checkout = new TransparentButton("Checkout");
+		checkout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(frmshop,
 						"Deine Bestellung von " + menge + " für $" + price + " wird vorbereitet!");
@@ -199,8 +200,8 @@ public class Shop {
 				txtSum.setText("$ 0");
 			}
 		});
-		btnNewButton_4.setBounds(853, 498, 117, 32);
-		panel.add(btnNewButton_4);
+		checkout.setBounds(853, 498, 117, 32);
+		panel.add(checkout);
 
 		bj_button = new TransparentButton("BlackJack");
 		bj_button.setFont(new Font("Dialog", Font.PLAIN, 20));

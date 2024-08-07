@@ -25,6 +25,7 @@ public class AdminView {
 	private JTextField textField_5;
 	private JTextField textField_6;
 	private JTextField textField_7;
+	private JTextField[] arr = { };
 
 	/**
 	 * Launch the application.
@@ -48,7 +49,6 @@ public class AdminView {
 	public AdminView() {
 		initialize();
 		loadAndDisplayCartData();
-		
 	}
 
 	/**

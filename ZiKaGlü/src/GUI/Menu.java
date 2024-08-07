@@ -108,6 +108,12 @@ public class Menu {
 								frame.setVisible(true);
 							}
 						});
+						shop.checkout.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent e) {
+								shop.frmshop.dispose();
+								frame.setVisible(true);
+							}
+						});
 					}
 				});
 			}
